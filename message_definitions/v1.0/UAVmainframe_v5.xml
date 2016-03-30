@@ -206,7 +206,7 @@
             <field type="uint16_t" name="FC_RPM_1">Fuel cell temperature</field>
             <field type="uint16_t" name="FC_RPM_2">Aux voltage</field>
         </message>
-        <message id="197" name="PID_TUNE>
+        <message id="197" name="PID_TUNE">
             <description>PID Controller data for tuning</description>
             <field type="uint32_t" name="time_boot_ms">Timestamp (milliseconds since system boot)</field>
             <field type="float" name="Cmd_In">Input command</field>
