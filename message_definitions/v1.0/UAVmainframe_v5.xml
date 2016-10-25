@@ -21,6 +21,7 @@
             <field type="float" name="pressure_alt">Altitude above ground in m</field>
             <field type="float" name="airspeed">Airspeed in m/s</field>
             <field type="float" name="aoa">Angle of attack in deg</field>
+            <field type="float" name="aoa_cal">Calibrated Angle of attack in deg</field>
             <field type="float" name="sideslip">Sideslip in deg</field>
         </message>
         <message id="182" name="AIRDATA_DEBUG">
@@ -139,7 +140,7 @@
         <message id="191" name="Longitudinal">
             <description>Status of FDR and Sensors</description>
             <field type="uint32_t" name="time_boot_ms">Timestamp (milliseconds since system boot)</field>
-            <field type="float" name="AoA">Angle of attack</field>
+            <field type="float" name="AoA_cal">Calibrated angle of attack</field>
             <field type="float" name="q">pitchrate</field>
             <field type="float" name="ax">Ax (mg)</field>
             <field type="float" name="az">Az (mg)</field>

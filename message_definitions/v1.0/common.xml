@@ -237,35 +237,17 @@
                <entry value="0" name="MAV_MODE_PREFLIGHT">
                     <description>System is not ready to fly, booting, calibrating, etc. No flag is set.</description>
                </entry>
-               <entry value="80" name="MAV_MODE_STABILIZE_DISARMED">
+               <entry value="144" name="MAV_MODE_STABILIZE_ARMED">
                     <description>System is allowed to be active, under assisted RC control.</description>
-               </entry>
-               <entry value="208" name="MAV_MODE_STABILIZE_ARMED">
-                    <description>System is allowed to be active, under assisted RC control.</description>
-               </entry>
-               <entry value="64" name="MAV_MODE_MANUAL_DISARMED">
-                    <description>System is allowed to be active, under manual (RC) control, no stabilization</description>
                </entry>
                <entry value="192" name="MAV_MODE_MANUAL_ARMED">
                     <description>System is allowed to be active, under manual (RC) control, no stabilization</description>
                </entry>
-               <entry value="88" name="MAV_MODE_GUIDED_DISARMED">
+               <entry value="136" name="MAV_MODE_GUIDED_ARMED">
                     <description>System is allowed to be active, under autonomous control, manual setpoint</description>
                </entry>
-               <entry value="216" name="MAV_MODE_GUIDED_ARMED">
-                    <description>System is allowed to be active, under autonomous control, manual setpoint</description>
-               </entry>
-               <entry value="92" name="MAV_MODE_AUTO_DISARMED">
+               <entry value="132" name="MAV_MODE_AUTO_ARMED">
                     <description>System is allowed to be active, under autonomous control and navigation (the trajectory is decided onboard and not pre-programmed by MISSIONs)</description>
-               </entry>
-               <entry value="220" name="MAV_MODE_AUTO_ARMED">
-                    <description>System is allowed to be active, under autonomous control and navigation (the trajectory is decided onboard and not pre-programmed by MISSIONs)</description>
-               </entry>
-               <entry value="66" name="MAV_MODE_TEST_DISARMED">
-                    <description>UNDEFINED mode. This solely depends on the autopilot - use with caution, intended for developers only.</description>
-               </entry>
-               <entry value="194" name="MAV_MODE_TEST_ARMED">
-                    <description>UNDEFINED mode. This solely depends on the autopilot - use with caution, intended for developers only.</description>
                </entry>
           </enum>
           <enum name="MAV_STATE">
