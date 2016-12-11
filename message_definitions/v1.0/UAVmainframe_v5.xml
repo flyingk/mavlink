@@ -259,5 +259,6 @@
             <field type="uint16_t" name="RPM_4">Motor 4 RPM [1/s]</field>
             <field type="uint16_t" name="RPM_5">Motor 5 RPM [1/s]</field>
             <field type="uint16_t" name="RPM_6">Motor 6 RPM [1/s]</field>
+        </message>
     </messages>
 </mavlink>
