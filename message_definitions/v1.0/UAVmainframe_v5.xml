@@ -223,9 +223,9 @@
             <field type="int16_t" name="p">Estimated angular rate X axis (deg/sec)</field>
             <field type="int16_t" name="q">Estimated angular rate Y axis (deg/sec)</field>
             <field type="int16_t" name="r">Estimated angular rate Z axis (deg/sec)</field>
-            <field type="float" name="Roll Angle">Estimated roll angle [deg]</field>
-            <field type="float" name="Pitch Angle">Estimated pitch angle [deg]</field>
-            <field type="float" name="Yaw Angle">Estimated yaw angle [deg]</field>
+            <field type="float" name="Roll">Estimated roll angle [deg]</field>
+            <field type="float" name="Pitch">Estimated pitch angle [deg]</field>
+            <field type="float" name="Yaw">Estimated yaw angle [deg]</field>
         </message>
         <message id="199" name="EKF_DEBUG">
         	<description>EKF debug info (bias states..)</description>
