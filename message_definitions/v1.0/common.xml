@@ -249,6 +249,18 @@
                <entry value="132" name="MAV_MODE_AUTO_ARMED">
                     <description>System is allowed to be active, under autonomous control and navigation (the trajectory is decided onboard and not pre-programmed by MISSIONs)</description>
                </entry>
+                <entry value="224" name="MAV_MODE_HIL_MANUAL_ARMED">
+                    <description>System is allowed to be active, but runs the onboard simulation with manual control</description>
+               </entry>
+                <entry value="176" name="MAV_MODE_HIL_STABILIZE_ARMED">
+                    <description>System is allowed to be active, but runs the onboard simulation with manual input and flight stabilisation</description>
+               </entry>
+                    <entry value="168" name="MAV_MODE_HIL_GUIDED_ARMED">
+                    <description>System is allowed to be active, but runs the onboard simulation in guided mode</description>
+               </entry>
+                    <entry value="164" name="MAV_MODE_HIL_AUTO_ARMED">
+                    <description>System is allowed to be active, but runs the onboard simulation in auto mode</description>
+               </entry>
           </enum>
           <enum name="MAV_STATE">
                <entry value="0" name="MAV_STATE_UNINIT">
