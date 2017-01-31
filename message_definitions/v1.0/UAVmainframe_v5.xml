@@ -245,8 +245,12 @@
             <field type="uint32_t" name="time_boot_ms">Timestamp (milliseconds since system boot)</field>
             <field type="float" name="Alt_Dem">Desired altitude [m]</field>
             <field type="float" name="Spd_Dem">Desired Airspeed [m/s]</field>
-            <field type="float" name="Alt">Current altitude [m]</field>
-            <field type="float" name="Spd">Current airspeed [m/s]</field>
+            <field type="float" name="tecs_SPE_dem">SPE_dem</field>
+			<field type="float" name="tecs_SKE_dem">SKE_dem</field>
+			<field type="float" name="tecs_SEB_dem">SEB_dem</field>
+			<field type="float" name="tecs_SPE_est">SPE_est</field>
+			<field type="float" name="tecs_SKE_est">SKE_est</field>
+			<field type="float" name="tecs_SEB_est">SEB_est</field>
             <field type="float" name="Pitch_Dem">Tecs output pitch demand [deg]</field>
             <field type="float" name="Thr_Dem">Tecs output throttle demand [%]</field>
         </message>
