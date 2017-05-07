@@ -3,6 +3,29 @@
     <include>common.xml</include>
     <version>3</version>
     <!--Version 4.0 -->
+    <enums>
+        <enum name="UAVmainframe_MODE">
+        <description>UAVmainframe-specific flight modes, sent as custom modes.</description>
+        <entry value="0" name="UAVmainframe_MODE_PREFLIGHT">
+            <description>Vehicle not armed and starting up.</description>
+        </entry>
+        <entry value="1" name="UAVmainframe_MODE_MANUAL">
+            <description>Vehicle is in manual control mode. RC control direct feed through.</description>
+        </entry>
+        <entry value="2" name="UAVmainframe_MODE_STABILISE">
+            <description>Vehicle is in stabilise mode, low level attitude controllers engaged by pilot switch.</description>
+        </entry>
+        <entry value="4" name="UAVmainframe_MODE_TECS">
+            <description>Vehicle is in altitude/speed hold mode.</description>
+        </entry>
+        <entry value="8" name="UAVmainframe_MODE_INPUT">
+            <description>Vehicle is executing test inputs automatically.</description>
+        </entry>
+        <entry value="16" name="UAVmainframe_MODE_SIM">
+            <description>Vehicle is running in simulation mode.</description>
+        </entry>
+        </enum>
+    </enums>
     <!-- MESSAGE IDs 180 - 240: Space for custom messages in individual projectname_messages.xml files -->
     <messages>
         <message id="180" name="EULER_DEBUG">
@@ -20,12 +43,11 @@
             <field type="uint32_t" name="time_boot_ms">Time since boot in msec</field>
             <field type="float" name="pressure_alt">Altitude above ground in m</field>
             <field type="float" name="airspeed">Airspeed in m/s</field>
-            <field type="float" name="aoa">Angle of attack in deg</field>
-            <field type="float" name="aoa_cal">Calibrated Angle of attack in deg</field>
-            <field type="float" name="sideslip">Sideslip in deg</field>
+            <field type="float" name="aoa">True angle of attack in deg</field>
+            <field type="float" name="sideslip">True angle of sideslip in deg</field>
         </message>
-        <message id="182" name="AIRDATA_DEBUG">
-            <description>Data from the airdata sensors.</description>
+        <message id="182" name="AIRDATA_5_hole">
+            <description>Data from the 5-hole probe airdata sensors.</description>
             <field type="uint32_t" name="time_boot_ms">Time since boot in msec</field>
             <field type="uint16_t" name="dynamic_pressure">Dynamic pressure in Pa</field>
             <field type="float" name="density">air density</field>
