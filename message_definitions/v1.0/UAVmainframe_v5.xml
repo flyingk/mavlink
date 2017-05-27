@@ -5,25 +5,76 @@
     <!--Version 4.0 -->
     <enums>
         <enum name="UAVmainframe_MODE">
-        <description>UAVmainframe-specific flight modes, sent as custom modes.</description>
-        <entry value="0" name="UAVmainframe_MODE_PREFLIGHT">
-            <description>Vehicle not armed and starting up.</description>
-        </entry>
-        <entry value="1" name="UAVmainframe_MODE_MANUAL">
-            <description>Vehicle is in manual control mode. RC control direct feed through.</description>
-        </entry>
-        <entry value="2" name="UAVmainframe_MODE_STABILISE">
-            <description>Vehicle is in stabilise mode, low level attitude controllers engaged by pilot switch.</description>
-        </entry>
-        <entry value="4" name="UAVmainframe_MODE_TECS">
-            <description>Vehicle is in altitude/speed hold mode.</description>
-        </entry>
-        <entry value="8" name="UAVmainframe_MODE_INPUT">
-            <description>Vehicle is executing test inputs automatically.</description>
-        </entry>
-        <entry value="16" name="UAVmainframe_MODE_SIM">
-            <description>Vehicle is running in simulation mode.</description>
-        </entry>
+			<description>UAVmainframe-specific flight modes, sent as custom modes.</description>
+			<entry value="0" name="UAVmainframe_MODE_PREFLIGHT">
+				<description>Vehicle not armed and starting up.</description>
+			</entry>
+			<entry value="1" name="UAVmainframe_MODE_MANUAL">
+				<description>(Bit 1) Vehicle is in manual control mode. RC control direct feed through with relays disengaged.</description>
+			</entry>
+			<entry value="2" name="UAVmainframe_MODE_PASSTHROUGH">
+				<description>(Bit 2) Vehicle is in manual control mode. RC control passed through UAVmainframe with relays engaged.</description>
+			</entry>
+			<entry value="4" name="UAVmainframe_MODE_STABILISE">
+				<description>(Bit 3) Vehicle is in stabilise mode, low level attitude controllers engaged.</description>
+			</entry>
+			<entry value="8" name="UAVmainframe_MODE_TECS">
+				<description>(Bit 4) Vehicle is in altitude/speed hold mode.</description>
+			</entry>
+			<entry value="16" name="UAVmainframe_MODE_RETURN_HOME">
+				<description>(Bit 5) Vehicle is commanded to return to home position at specified altitude.</description>
+			</entry>
+			<entry value="32" name="UAVmainframe_MODE_INPUT_OPEN_LOOP">
+				<description>(Bit 6) Vehicle is executing open loop test inputs automatically.</description>
+			</entry>
+			<entry value="64" name="UAVmainframe_MODE_INPUT_CLOSED_LOOP">
+				<description>(Bit 7) Vehicle is executing closed loop test inputs automatically.</description>
+			</entry>
+			<entry value="128" name="UAVmainframe_MODE_INPUT_PERFORMANCE">
+				<description>(Bit 8) Vehicle is executing performance test inputs automatically.</description>
+			</entry>
+			<entry value="256" name="UAVmainframe_MODE_AUTO">
+				<description>(Bit 9) Vehicle is running in auto mode. For future use.</description>
+			</entry>
+			<entry value="65536" name="UAVmainframe_MODE_FLAG_SAFETY_ARMED">
+				<description>(Bit 16) UAVmainframe safety set to armed. Motors are enabled / running / can start. Ready to fly.</description>
+			</entry>
+        </enum>
+		<enum name="UAVmainframe_MODE_FLAG_DECODE_POSITION">
+			<description>These values encode the bit positions of the decode position. These values can be used to read the value of a flag bit by combining the base_mode variable with AND with the flag position value. The result will be either 0 or 1, depending on if the flag is set or not.</description>
+			<entry value="0" name="UAVmainframe_MODE_FLAG_DECODE_POSITION_PREFLIGHT">
+				<description>Vehicle not armed and starting up.</description>
+			</entry>
+			<entry value="1" name="UAVmainframe_MODE_FLAG_DECODE_POSITION_MANUAL">
+				<description>(Bit 1) Vehicle is in manual control mode. RC control direct feed through with relays disengaged.</description>
+			</entry>
+			<entry value="2" name="UAVmainframe_MODE_FLAG_DECODE_POSITION_PASSTHROUGH">
+				<description>(Bit 2) Vehicle is in manual control mode. RC control passed through UAVmainframe with relays engaged.</description>
+			</entry>
+			<entry value="4" name="UAVmainframe_MODE_FLAG_DECODE_POSITION_STABILISE">
+				<description>(Bit 3) Vehicle is in stabilise mode, low level attitude controllers engaged.</description>
+			</entry>
+			<entry value="8" name="UAVmainframe_MODE_FLAG_DECODE_POSITION_TECS">
+				<description>(Bit 4) Vehicle is in altitude/speed hold mode.</description>
+			</entry>
+			<entry value="16" name="UAVmainframe_MODE_FLAG_DECODE_POSITION_RETURN_HOME">
+				<description>(Bit 5) Vehicle is commanded to return to home position at specified altitude.</description>
+			</entry>
+			<entry value="32" name="UAVmainframe_MODE_FLAG_DECODE_POSITION_INPUT_OPEN_LOOP">
+				<description>(Bit 6) Vehicle is executing open loop test inputs automatically.</description>
+			</entry>
+			<entry value="64" name="UAVmainframe_MODE_FLAG_DECODE_POSITION_INPUT_CLOSED_LOOP">
+				<description>(Bit 7) Vehicle is executing closed loop test inputs automatically.</description>
+			</entry>
+			<entry value="128" name="UAVmainframe_MODE_FLAG_DECODE_POSITION_INPUT_PERFORMANCE">
+				<description>(Bit 8) Vehicle is executing performance test inputs automatically.</description>
+			</entry>
+			<entry value="256" name="UAVmainframe_MODE_FLAG_DECODE_POSITION_AUTO">
+				<description>(Bit 9) Vehicle is running in auto mode. For future use.</description>
+			</entry>
+			<entry value="65536" name="UAVmainframe_MODE_FLAG_DECODE_POSITION_SAFETY_ARMED">
+				<description>(Bit 16) UAVmainframe safety set to armed. Motors are enabled / running / can start. Ready to fly.</description>
+			</entry>
         </enum>
     </enums>
     <!-- MESSAGE IDs 180 - 240: Space for custom messages in individual projectname_messages.xml files -->
