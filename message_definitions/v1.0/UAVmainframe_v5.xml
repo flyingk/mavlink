@@ -5,6 +5,7 @@
     <!--Version 4.0 -->
     <enums>
         <enum name="UAVmainframe_MODE">
+        <!-- The upper 8 bit of the 32bit word are for sub modes -->
 			<description>UAVmainframe-specific flight modes, sent as custom modes.</description>
 			<entry value="0" name="UAVmainframe_MODE_PREFLIGHT">
 				<description>Vehicle not armed and starting up.</description>
@@ -38,6 +39,9 @@
 			</entry>
 			<entry value="65536" name="UAVmainframe_MODE_FLAG_SAFETY_ARMED">
 				<description>(Bit 16) UAVmainframe safety set to armed. Motors are enabled / running / can start. Ready to fly.</description>
+			</entry>
+			<entry value="131072" name="UAVmainframe_MODE_FLAG_FLIGHT_SIM">
+				<description>(Bit 17) UAVmainframe in flight sim mode</description>
 			</entry>
         </enum>
 		<enum name="UAVmainframe_MODE_FLAG_DECODE_POSITION">
@@ -74,6 +78,31 @@
 			</entry>
 			<entry value="65536" name="UAVmainframe_MODE_FLAG_DECODE_POSITION_SAFETY_ARMED">
 				<description>(Bit 16) UAVmainframe safety set to armed. Motors are enabled / running / can start. Ready to fly.</description>
+			</entry>
+			<entry value="131072" name="UAVmainframe_MODE_FLAG_FLIGHT_SIM">
+				<description>(Bit 17) UAVmainframe in flight sim mode</description>
+			</entry>
+        </enum>
+        <enum name="UAVmainframe_PERFORMANCE_INPUT_SUB_MODES">
+        	<entry value="16777216" name="UAVmainframe_SUB_MODE_FLAG_GLIDE">
+				<description>(Bit 24) Glide mode.</description>
+			</entry>
+			<entry value="33554432" name="UAVmainframe_SUB_MODE_FLAG_ACCEL">
+				<description>(Bit 25) Constant altitude acceleration mode.</description>
+			</entry>
+			<entry value="67108864" name="UAVmainframe_SUB_MODE_FLAG_TURN">
+				<description>(Bit 26) Constant altitude and speed turning mode.</description>
+			</entry>
+        </enum>
+        <enum name="UAVmainframe_STABILITY_INPUT_SUB_MODES">
+        	<entry value="16777216" name="UAVmainframe_SUB_MODE_FLAG_ELEVATOR">
+				<description>(Bit 24) Elevator input.</description>
+			</entry>
+			<entry value="33554432" name="UAVmainframe_SUB_MODE_FLAG_RUDDER">
+				<description>(Bit 25) Rudder input.</description>
+			</entry>
+			<entry value="67108864" name="UAVmainframe_SUB_MODE_FLAG_AILERON">
+				<description>(Bit 26) Aileron input.</description>
 			</entry>
         </enum>
     </enums>
