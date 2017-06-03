@@ -5,7 +5,7 @@
     <!--Version 4.0 -->
     <enums>
         <enum name="UAVmainframe_MODE">
-        <!-- The upper 16 bit of the 32bit word are for sub modes -->
+        <!-- custom mode field layout: 8 bit flags, 8 bit sub modes, 16 bit modes -->
 			<description>UAVmainframe-specific flight modes, sent as custom modes.</description>
 			<entry value="0" name="UAVmainframe_MODE_PREFLIGHT">
 				<description>Vehicle not armed and starting up.</description>
@@ -27,12 +27,6 @@
 			</entry>
 			<entry value="32" name="UAVmainframe_MODE_INPUT">
 				<description>(Bit 6) Vehicle is executing test inputs automatically.</description>
-			</entry>
-			<entry value="16384" name="UAVmainframe_MODE_FLAG_SAFETY_ARMED">
-				<description>(Bit 15) UAVmainframe safety set to armed. Motors are enabled / running / can start. Ready to fly.</description>
-			</entry>
-			<entry value="32768" name="UAVmainframe_MODE_FLAG_FLIGHT_SIM">
-				<description>(Bit 16) UAVmainframe in flight sim mode</description>
 			</entry>
         </enum>
         <enum name="UAVmainframe_AUTO_SUB_MODES">
@@ -62,9 +56,17 @@
 			<entry value="64" name="UAVmainframe_SUB_MODE_FLAG_TURN">
 				<description>(Bit 7) Constant altitude and speed turning mode.</description>
 			</entry>
-			<entry value="32768" name="UAVmainframe_MODE_INPUT_CLOSED_LOOP">
-				<description>(Bit 16) Vehicle is executing closed loop test inputs</description>
-			</entry>
+        </enum>
+        <enum name="UAVmainframe_MODE_FLAGS">
+            <entry value="1" name="UAVmainframe_MODE_FLAG_SAFETY_ARMED">
+                <description>(Bit 1) UAVmainframe safety set to armed. Motors are enabled / running / can start. Ready to fly.</description>
+            </entry>
+            <entry value="2" name="UAVmainframe_MODE_FLAG_FLIGHT_SIM">
+                <description>(Bit 2) UAVmainframe in flight sim mode</description>
+            </entry>
+            <entry value="4" name="UAVmainframe_MODE_FLAG_INPUT_CLOSED_LOOP">
+                <description>(Bit 3) Vehicle is executing closed loop test inputs</description>
+            </entry>
         </enum>
     </enums>
     <!-- MESSAGE IDs 180 - 240: Space for custom messages in individual projectname_messages.xml files -->
