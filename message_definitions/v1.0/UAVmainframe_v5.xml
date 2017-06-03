@@ -3,6 +3,72 @@
     <include>common.xml</include>
     <version>3</version>
     <!--Version 4.0 -->
+    <enums>
+        <enum name="UAVmainframe_MODE">
+        <!-- custom mode field layout: 8 bit flags, 8 bit sub modes, 16 bit modes -->
+			<description>UAVmainframe-specific flight modes, sent as custom modes.</description>
+			<entry value="0" name="UAVmainframe_MODE_PREFLIGHT">
+				<description>Vehicle not armed and starting up.</description>
+			</entry>
+			<entry value="1" name="UAVmainframe_MODE_MANUAL">
+				<description>(Bit 1) Vehicle is in manual control mode. RC control direct feed through with relays disengaged.</description>
+			</entry>
+			<entry value="2" name="UAVmainframe_MODE_PASSTHROUGH">
+				<description>(Bit 2) Vehicle is in manual control mode. RC control passed through UAVmainframe with relays engaged.</description>
+			</entry>
+			<entry value="4" name="UAVmainframe_MODE_STABILISE">
+				<description>(Bit 3) Vehicle is in stabilise mode, low level attitude controllers engaged.</description>
+			</entry>
+			<entry value="8" name="UAVmainframe_MODE_TECS">
+				<description>(Bit 4) Vehicle is in altitude/speed hold mode.</description>
+			</entry>
+			<entry value="16" name="UAVmainframe_MODE_AUTO">
+				<description>(Bit 5) Vehicle is running in auto mode with onboard guidance.</description>
+			</entry>
+			<entry value="32" name="UAVmainframe_MODE_INPUT">
+				<description>(Bit 6) Vehicle is executing test inputs automatically.</description>
+			</entry>
+        </enum>
+        <enum name="UAVmainframe_AUTO_SUB_MODES">
+			<entry value="1" name="UAVmainframe_SUB_MODE_RETURN_HOME">
+				<description>(Bit 1) Vehicle is commanded to return to home position at specified altitude.</description>
+			</entry>
+        </enum>
+        <enum name="UAVmainframe_INPUT_SUB_MODES">
+        	<entry value="1" name="UAVmainframe_SUB_MODE_FLAG_ELEVATOR">
+				<description>(Bit 1) Elevator input.</description>
+			</entry>
+			<entry value="2" name="UAVmainframe_SUB_MODE_FLAG_RUDDER">
+				<description>(Bit 2) Rudder input.</description>
+			</entry>
+			<entry value="4" name="UAVmainframe_SUB_MODE_FLAG_AILERON">
+				<description>(Bit 3) Aileron input.</description>
+			</entry>
+			<entry value="8" name="UAVmainframe_SUB_MODE_FLAG_THROTTLE">
+				<description>(Bit 4) Throttle input.</description>
+			</entry>
+			<entry value="16" name="UAVmainframe_SUB_MODE_FLAG_GLIDE">
+				<description>(Bit 5) Glide mode.</description>
+			</entry>
+			<entry value="32" name="UAVmainframe_SUB_MODE_FLAG_ACCEL">
+				<description>(Bit 6) Constant altitude acceleration mode.</description>
+			</entry>
+			<entry value="64" name="UAVmainframe_SUB_MODE_FLAG_TURN">
+				<description>(Bit 7) Constant altitude and speed turning mode.</description>
+			</entry>
+        </enum>
+        <enum name="UAVmainframe_MODE_FLAGS">
+            <entry value="1" name="UAVmainframe_MODE_FLAG_SAFETY_ARMED">
+                <description>(Bit 1) UAVmainframe safety set to armed. Motors are enabled / running / can start. Ready to fly.</description>
+            </entry>
+            <entry value="2" name="UAVmainframe_MODE_FLAG_FLIGHT_SIM">
+                <description>(Bit 2) UAVmainframe in flight sim mode</description>
+            </entry>
+            <entry value="4" name="UAVmainframe_MODE_FLAG_INPUT_CLOSED_LOOP">
+                <description>(Bit 3) Vehicle is executing closed loop test inputs</description>
+            </entry>
+        </enum>
+    </enums>
     <!-- MESSAGE IDs 180 - 240: Space for custom messages in individual projectname_messages.xml files -->
     <messages>
         <message id="180" name="EULER_DEBUG">
@@ -20,12 +86,11 @@
             <field type="uint32_t" name="time_boot_ms">Time since boot in msec</field>
             <field type="float" name="pressure_alt">Altitude above ground in m</field>
             <field type="float" name="airspeed">Airspeed in m/s</field>
-            <field type="float" name="aoa">Angle of attack in deg</field>
-            <field type="float" name="aoa_cal">Calibrated Angle of attack in deg</field>
-            <field type="float" name="sideslip">Sideslip in deg</field>
+            <field type="float" name="aoa">True angle of attack in deg</field>
+            <field type="float" name="sideslip">True angle of sideslip in deg</field>
         </message>
-        <message id="182" name="AIRDATA_DEBUG">
-            <description>Data from the airdata sensors.</description>
+        <message id="182" name="AIRDATA_5_hole">
+            <description>Data from the 5-hole probe airdata sensors.</description>
             <field type="uint32_t" name="time_boot_ms">Time since boot in msec</field>
             <field type="uint16_t" name="dynamic_pressure">Dynamic pressure in Pa</field>
             <field type="float" name="density">air density</field>
