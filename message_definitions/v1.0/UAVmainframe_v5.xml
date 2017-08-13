@@ -346,11 +346,11 @@
             <field type="uint16_t" name="RPM_5">Motor 5 RPM [1/s]</field>
             <field type="uint16_t" name="RPM_6">Motor 6 RPM [1/s]</field>
         </message>
-        <!--UAVmainframe card link - Version 1.0
+        <!--  UAVmainframe card link - Version 1.0  -->
         <message id="221" name="THRUST_SENSOR">
                 <description>Data from a thrust measurement load cell</description>
                 <field type="uint32_t" name="time_boot_ms">Time since boot in msec</field>
                 <field type="uint32_t" name="Load_cell">Load cell data</field>
-        </message> -->
+        </message>
     </messages>
 </mavlink>
