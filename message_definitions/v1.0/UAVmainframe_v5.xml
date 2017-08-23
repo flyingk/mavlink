@@ -122,7 +122,7 @@
             <field type="float" name="elevator">Elevator angle in deg</field>
             <field type="float" name="rudder">Rudder angle in deg</field>
             <field type="float" name="aileron">Aileron angle in deg</field>
-            <field type="float" name="ctrl_aux_1">Aux channel 1 in deg</field>
+            <field type="float" name="Thrust_1">Thrust engine 1 in kg</field>
             <field type="float" name="ctrl_aux_2">Aux channel 2 in deg</field>
             <field type="float" name="ctrl_aux_3">Aux channel 3 in deg</field>
         </message>
