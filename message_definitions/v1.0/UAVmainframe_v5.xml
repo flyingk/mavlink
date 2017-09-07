@@ -314,8 +314,8 @@
             <field type="float" name="Roll">Estimated roll angle [deg]</field>
             <field type="float" name="Pitch">Estimated pitch angle [deg]</field>
             <field type="float" name="Yaw">Estimated yaw angle [deg]</field>
-            <field type="float" name="Wn">Estimated Wn (m/s)</field>
-            <field type="float" name="We">Estimated We (m/s)</field>
+            <field type="float" name="W_spd">Estimated Wind speed (m/s)</field>
+            <field type="float" name="W_dir">Estimated Wind direction (deg)</field>
             <field type="float" name="Vair">Estimated airspeed [m/s]</field>
             <field type="float" name="AoA">Estimated aoa [deg]</field>
             <field type="float" name="CW">Estimated sideslip [deg]</field>
@@ -323,16 +323,16 @@
         <message id="199" name="EKF_DEBUG">
         	<description>EKF debug info (bias states..)</description>
             <field type="uint32_t" name="time_boot_ms">Timestamp (milliseconds since system boot)</field>
-            <field type="int16_t" name="GX_b__mdeg_s">Estimated gyro x bias [deg/s]</field>
-            <field type="int16_t" name="GY_b__mdeg_s">Estimated gyro y bias [deg/s]</field>
-            <field type="int16_t" name="GZ_b__mdeg_s">Estimated gyro z bias [deg/s]</field>
+            <field type="int16_t" name="GX_b__mdps">Estimated gyro x bias [deg/s]</field>
+            <field type="int16_t" name="GY_b__mdps">Estimated gyro y bias [deg/s]</field>
+            <field type="int16_t" name="GZ_b__mdps">Estimated gyro z bias [deg/s]</field>
             <field type="int16_t" name="AX_b__mg">Estimated ax bias [mg]</field>
             <field type="int16_t" name="AY_b__mg">Estimated ay bias [mg]</field>
             <field type="int16_t" name="AZ_b__mg">Estimated az bias [mg]</field>
             <field type="int16_t" name="MX_b__mG">Estimated mx bias [mG]</field>
             <field type="int16_t" name="MY_b__mG">Estimated my bias [mG]</field>
             <field type="int16_t" name="MZ_b__mG">Estimated mz bias [mG]</field>
-            <field type="int16_t" name="Vair_b__cm_s">Estimated Vair bias [mg]</field>
+            <field type="int16_t" name="Vair_b__cmps">Estimated Vair bias [mg]</field>
             <field type="int16_t" name="AoA_b__mdeg">Estimated aoa bias [mg]</field>
             <field type="int16_t" name="CW_b__mdeg">Estimated cw bias [mg]</field>
             <field type="int16_t" name="Alt_b__cm">Estimated alt bias [mg]</field>
@@ -346,10 +346,10 @@
             <field type="int16_t" name="Pn__cm">Pn (m)</field>
             <field type="int16_t" name="Pe__cm">Pe (m)</field>
             <field type="int16_t" name="Pd__cm">Pd (m)</field>
-            <field type="int16_t" name="Vn__cm_s">Vn (m)</field>
-            <field type="int16_t" name="Ve__cm_s">Ve (m)</field>
-            <field type="int16_t" name="Vd__cm_s">Vd (m)</field>
-            <field type="int16_t" name="Vair__cm_s">Estimated Pn (m)</field>
+            <field type="int16_t" name="Vn__cmps">Vn (m)</field>
+            <field type="int16_t" name="Ve__cmps">Ve (m)</field>
+            <field type="int16_t" name="Vd__cmps">Vd (m)</field>
+            <field type="int16_t" name="Vair__cmps">Estimated Pn (m)</field>
             <field type="int16_t" name="AoA__mdeg">Estimated Pe (m)</field>
             <field type="int16_t" name="CW__mdeg">Estimated Pd (m)</field>
             <field type="int16_t" name="Alt__cm">Estimated Pn (m)</field>
