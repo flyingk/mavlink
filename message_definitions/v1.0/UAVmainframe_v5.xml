@@ -305,17 +305,17 @@
             <field type="int16_t" name="N">Estimated Pn (m)</field>
             <field type="int16_t" name="E">Estimated Pe (m)</field>
             <field type="int16_t" name="D">Estimated Pd (m)</field>
-            <field type="int16_t" name="u">Estimated body axis x-vel (m/sec)</field>
-            <field type="int16_t" name="v">Estimated body axis y-vel (m/sec)</field>
-            <field type="int16_t" name="w">Estimated body axis z-vel (m/sec)</field>
+            <field type="float" name="u">Estimated body axis x-vel (m/sec)</field>
+            <field type="float" name="v">Estimated body axis y-vel (m/sec)</field>
+            <field type="float" name="w">Estimated body axis z-vel (m/sec)</field>
             <field type="int16_t" name="p">Estimated angular rate X axis (deg/sec)</field>
             <field type="int16_t" name="q">Estimated angular rate Y axis (deg/sec)</field>
             <field type="int16_t" name="r">Estimated angular rate Z axis (deg/sec)</field>
             <field type="float" name="Roll">Estimated roll angle [deg]</field>
             <field type="float" name="Pitch">Estimated pitch angle [deg]</field>
             <field type="float" name="Yaw">Estimated yaw angle [deg]</field>
-            <field type="int16_t" name="Wn">Estimated Wn (m/s)</field>
-            <field type="int16_t" name="We">Estimated We (m/s)</field>
+            <field type="float" name="Wn">Estimated Wn (m/s)</field>
+            <field type="float" name="We">Estimated We (m/s)</field>
             <field type="float" name="Vair">Estimated airspeed [m/s]</field>
             <field type="float" name="AoA">Estimated aoa [deg]</field>
             <field type="float" name="CW">Estimated sideslip [deg]</field>
@@ -323,14 +323,41 @@
         <message id="199" name="EKF_DEBUG">
         	<description>EKF debug info (bias states..)</description>
             <field type="uint32_t" name="time_boot_ms">Timestamp (milliseconds since system boot)</field>
-            <field type="int16_t" name="GX_bias">Estimated gyro x bias [deg/s]</field>
-            <field type="int16_t" name="GY_bias">Estimated gyro y bias [deg/s]</field>
-            <field type="int16_t" name="GZ_bias">Estimated gyro z bias [deg/s]</field>
-            <field type="int16_t" name="AX_bias">Estimated ax bias [g]</field>
-            <field type="int16_t" name="AY_bias">Estimated ay bias [g]</field>
-            <field type="int16_t" name="AZ_bias">Estimated az bias [g]</field>
+            <field type="int16_t" name="GX_b__mdeg_s">Estimated gyro x bias [deg/s]</field>
+            <field type="int16_t" name="GY_b__mdeg_s">Estimated gyro y bias [deg/s]</field>
+            <field type="int16_t" name="GZ_b__mdeg_s">Estimated gyro z bias [deg/s]</field>
+            <field type="int16_t" name="AX_b__mg">Estimated ax bias [mg]</field>
+            <field type="int16_t" name="AY_b__mg">Estimated ay bias [mg]</field>
+            <field type="int16_t" name="AZ_b__mg">Estimated az bias [mg]</field>
+            <field type="int16_t" name="MX_b__mG">Estimated mx bias [mG]</field>
+            <field type="int16_t" name="MY_b__mG">Estimated my bias [mG]</field>
+            <field type="int16_t" name="MZ_b__mG">Estimated mz bias [mG]</field>
+            <field type="int16_t" name="Vair_b__cm_s">Estimated Vair bias [mg]</field>
+            <field type="int16_t" name="AoA_b__mdeg">Estimated aoa bias [mg]</field>
+            <field type="int16_t" name="CW_b__mdeg">Estimated cw bias [mg]</field>
+            <field type="int16_t" name="Alt_b__cm">Estimated alt bias [mg]</field>
+            <field type="int16_t" name="Vair_scale">Estimated Vair scale [mg]</field>
+            <field type="int16_t" name="AoA_scale">Estimated aoa scale [mg]</field>
+            <field type="int16_t" name="CW_scale">Estimated cw scale [mg]</field>
         </message>
-        <message id="200" name="TECS_DEBUG">
+        <message id="200" name="EKF_Residual">
+            <description>EKF measurement residuals</description>
+            <field type="uint32_t" name="time_boot_ms">Timestamp (milliseconds since system boot)</field>
+            <field type="int16_t" name="Pn__cm">Pn (m)</field>
+            <field type="int16_t" name="Pe__cm">Pe (m)</field>
+            <field type="int16_t" name="Pd__cm">Pd (m)</field>
+            <field type="int16_t" name="Vn__cm_s">Vn (m)</field>
+            <field type="int16_t" name="Ve__cm_s">Ve (m)</field>
+            <field type="int16_t" name="Vd__cm_s">Vd (m)</field>
+            <field type="int16_t" name="Vair__cm_s">Estimated Pn (m)</field>
+            <field type="int16_t" name="AoA__mdeg">Estimated Pe (m)</field>
+            <field type="int16_t" name="CW__mdeg">Estimated Pd (m)</field>
+            <field type="int16_t" name="Alt__cm">Estimated Pn (m)</field>
+            <field type="int16_t" name="Mx__mG">Estimated Pe (m)</field>
+            <field type="int16_t" name="My__mG">Estimated Pd (m)</field>
+            <field type="int16_t" name="Mz__mG">Estimated Pd (m)</field>
+        </message>
+        <message id="201" name="TECS_DEBUG">
         	<description>TECS debug info</description>
             <field type="uint32_t" name="time_boot_ms">Timestamp (milliseconds since system boot)</field>
             <field type="float" name="Alt_Dem">Desired altitude [m]</field>
@@ -344,7 +371,7 @@
             <field type="float" name="Pitch_Dem">Tecs output pitch demand [deg]</field>
             <field type="float" name="Thr_Dem">Tecs output throttle demand [%]</field>
         </message>
-        <message id="201" name="MR_DEBUG">
+        <message id="202" name="MR_DEBUG">
         	<description>Multirotor debug info (MattPilot)</description>
             <field type="uint32_t" name="time_boot_ms">Timestamp (milliseconds since system boot)</field>
             <field type="uint16_t" name="RPM_1">Motor 1 RPM [1/s]</field>
