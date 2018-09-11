@@ -1,0 +1,66 @@
+<?xml version='1.0'?>
+<mavlink>
+    <include>common.xml</include>
+    <version>3</version>
+    <!--Version 1.0 -->
+    <!-- MESSAGE IDs 180 - 240: Space for custom messages in individual projectname_messages.xml files -->
+    <messages>
+        <message id="180" name="VEHICLE_STATE">
+        	<description>Vehicle state for displays</description>
+            <field type="uint32_t" name="time_boot_ms">Timestamp (Simulation time)</field>
+            <field type="double" name="Lat">Estimated Pn (m)</field>
+            <field type="double" name="Lon">Estimated Pe (m)</field>
+            <field type="float" name="Alt">Estimated Pd (m)</field>
+            <field type="float" name="Vn">Estimated body axis x-vel (m/sec)</field>
+            <field type="float" name="Ve">Estimated body axis y-vel (m/sec)</field>
+            <field type="float" name="Vd">Estimated body axis z-vel (m/sec)</field>
+            <field type="float" name="p">Estimated angular rate X axis (deg/sec)</field>
+            <field type="float" name="q">Estimated angular rate Y axis (deg/sec)</field>
+            <field type="float" name="r">Estimated angular rate Z axis (deg/sec)</field>
+            <field type="float" name="Roll">Estimated roll angle [deg]</field>
+            <field type="float" name="Pitch">Estimated pitch angle [deg]</field>
+            <field type="float" name="Yaw">Estimated yaw angle [deg]</field>
+            <field type="float" name="Vair">Estimated airspeed [m/s]</field>
+            <field type="float" name="AoA">Estimated aoa [deg]</field>
+            <field type="float" name="AoS">Estimated sideslip [deg]</field>
+            <field type="uint32_t" name="Pressure">Ambient pressure (Pa)</field>
+            <field type="float" name="Temp">Ambient temperature (C)</field>
+            <field type="float" name="W_spd">Estimated Wind speed (m/s)</field>
+            <field type="float" name="W_dir">Estimated Wind direction (deg)</field>
+            <field type="float" name="Nz">Load factor (-)</field>
+            <field type="float" name="Elec_PWR">Current electrical power consumption (kW)</field>
+            <field type="float" name="Energy_used">Total energy consumption (kWh)</field>
+        </message>
+        <message id="181" name="Control_Input">
+        	<description>Pilot control inputs</description>
+        	<field type="uint32_t" name="time_boot_ms">Timestamp (Simulation time)</field>
+        	<field type="int16_t" name="Stick_LHS_X">LHS Stick position X [%]</field>
+        	<field type="int16_t" name="STICK_LHS_Y">LHS Stick position Y [%]</field>
+        	<field type="int16_t" name="STICK_RHS_X">RHS Stick position X [%]</field>
+        	<field type="int16_t" name="STICK_RHS_Y">RHS Stick position Y [%]</field>
+        	<field type="uint8_t" name="SWITCH_ARM">Arming switch [-]</field>
+        	<field type="uint8_t" name="SWITCH_Gear">Landing gear switch [-]</field>
+        </message>
+        <message id="182" name="Actuator_Feedback">
+        	<description>Actuator feedback and status</description>
+        	<field type="uint32_t" name="time_boot_ms">Timestamp (Simulation time)</field>
+        	<field type="uint16_t" name="RPM_LHS_CAN">LHS canard rpm [1/min]</field>
+        	<field type="uint16_t" name="RPM_LHS_WING">LHS wing rpm [1/min]</field>
+        	<field type="uint16_t" name="RPM_RHS_CAN">RHS canard rpm [1/min]</field>
+        	<field type="uint16_t" name="RPM_RHS_WING">RHS wing rpm [1/min]</field>
+        	<field type="float" name="FLAP_LHS_CAN">LHS canard flap angle [1/min]</field>
+        	<field type="float" name="FLAP_LHS_WING">LHS wing flap angle [1/min]</field>
+        	<field type="float" name="FLAP_RHS_CAN">RHS canard flap angle [1/min]</field>
+        	<field type="float" name="FLAP_RHS_WING">RHS wing flap angle [1/min]</field>
+        </message>
+        <message id="183" name="Vehicle_Status">
+        	<description>System status flags</description>
+            <field type="uint32_t" name="time_boot_ms">Timestamp (Simulation time)</field>
+            <field type="uint8_t" name="ARMED">FCL Arming status [-]</field>
+        	<field type="uint8_t" name="Gear">Landing gear status [-]</field>
+        	<field type="uint8_t" name="FCL_MODE_LON">FCL longitudinal mode [-]</field>
+        	<field type="uint8_t" name="FCL_MODE_LAT">FCL lateral mode [-]</field>
+        	<field type="uint8_t" name="AERO_MDL_STATUS">Aero model status flag [-]</field>
+        </message>
+    </messages>
+</mavlink>
