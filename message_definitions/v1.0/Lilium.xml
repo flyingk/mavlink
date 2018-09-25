@@ -8,9 +8,12 @@
         <message id="180" name="VEHICLE_STATE">
         	<description>Vehicle state for displays</description>
             <field type="uint32_t" name="time_boot_ms">Timestamp (Simulation time)</field>
-            <field type="double" name="Lat">Estimated Pn (m)</field>
-            <field type="double" name="Lon">Estimated Pe (m)</field>
-            <field type="float" name="Alt">Estimated Pd (m)</field>
+            <field type="double" name="Lat">Estimated Lat (deg)</field>
+            <field type="double" name="Lon">Estimated Lon (deg)</field>
+            <field type="float" name="Alt_msl">Estimated Alt above msl (m)</field>
+            <field type="float" name="Pn">Estimated Pn (m)</field>
+            <field type="float" name="Pe">Estimated Pe (m)</field>
+            <field type="float" name="Pd">Estimated Pd (m)</field>
             <field type="float" name="Vn">Estimated body axis x-vel (m/sec)</field>
             <field type="float" name="Ve">Estimated body axis y-vel (m/sec)</field>
             <field type="float" name="Vd">Estimated body axis z-vel (m/sec)</field>
