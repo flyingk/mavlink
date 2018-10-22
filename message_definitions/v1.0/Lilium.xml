@@ -11,6 +11,7 @@
             <field type="double" name="Lat">Estimated Lat (deg)</field>
             <field type="double" name="Lon">Estimated Lon (deg)</field>
             <field type="float" name="Alt_msl">Estimated Alt above msl (m)</field>
+            <field type="float" name="Alt_AGL">Estimated Alt above ground level (m)</field>
             <field type="float" name="Pn">Estimated Pn (m)</field>
             <field type="float" name="Pe">Estimated Pe (m)</field>
             <field type="float" name="Pd">Estimated Pd (m)</field>
@@ -34,24 +35,22 @@
             <field type="float" name="Elec_PWR">Current electrical power consumption (kW)</field>
             <field type="float" name="Energy_used">Total energy consumption (kWh)</field>
         </message>
-        <message id="181" name="CONTROL_INPUT_FBK">
+        <message id="181" name="CONTROL_STICK_FBK">
         	<description>Pilot control inputs as received by the simulation</description>
         	<field type="uint32_t" name="time_boot_ms">Timestamp (Simulation time)</field>
         	<field type="int16_t" name="STICK_LHS_X">LHS Stick position X [%]</field>
         	<field type="int16_t" name="STICK_LHS_Y">LHS Stick position Y [%]</field>
         	<field type="int16_t" name="STICK_RHS_X">RHS Stick position X [%]</field>
         	<field type="int16_t" name="STICK_RHS_Y">RHS Stick position Y [%]</field>
-        	<field type="uint8_t" name="SWITCH_ARM">Arming switch [-]</field>
-        	<field type="uint8_t" name="SWITCH_Gear">Landing gear switch [-]</field>
         </message>
         <message id="182" name="FLAP_FEEDBACK">
         	<description>Flap position feedback and status</description>
         	<field type="uint32_t" name="time_boot_ms">Timestamp (Simulation time)</field>
         	<field type="uint16_t" name="FLAP_STATUS">Flap status bitmask [OK/Fail]</field>
-        	<field type="float" name="FLAP_LHS_CAN_10">LHS canard flap angle [deg]</field>
         	<field type="float" name="FLAP_LHS_CAN_11">LHS canard flap angle [deg]</field>
-        	<field type="float" name="FLAP_RHS_CAN_20">RHS canard flap angle [deg]</field>
+        	<field type="float" name="FLAP_LHS_CAN_12">LHS canard flap angle [deg]</field>
         	<field type="float" name="FLAP_RHS_CAN_21">RHS canard flap angle [deg]</field>
+        	<field type="float" name="FLAP_RHS_CAN_22">RHS canard flap angle [deg]</field>
         	<field type="float" name="FLAP_LHS_WING_31">LHS wing flap angle [deg]</field>
 			<field type="float" name="FLAP_LHS_WING_32">LHS wing flap angle [deg]</field>
 			<field type="float" name="FLAP_LHS_WING_33">LHS wing flap angle [deg]</field>
@@ -65,42 +64,42 @@
         	<description>Engine RPM feedback and status</description>
         	<field type="uint32_t" name="time_boot_ms">Timestamp (Simulation time)</field>
         	<field type="uint64_t" name="ENGINE_STATUS">Engine status bitmask [OK/Fail]</field>
-        	<field type="uint16_t" name="ENGINE_LHS_CAN_10">LHS canard ENGINE RPM [1/min]</field>
-        	<field type="uint16_t" name="ENGINE_LHS_CAN_11">LHS canard ENGINE RPM [1/min]</field>
-        	<field type="uint16_t" name="ENGINE_LHS_CAN_12">LHS canard ENGINE RPM [1/min]</field>
-        	<field type="uint16_t" name="ENGINE_LHS_CAN_20">LHS canard ENGINE RPM [1/min]</field>
-        	<field type="uint16_t" name="ENGINE_LHS_CAN_21">LHS canard ENGINE RPM [1/min]</field>
-        	<field type="uint16_t" name="ENGINE_LHS_CAN_22">LHS canard ENGINE RPM [1/min]</field>
-        	<field type="uint16_t" name="ENGINE_RHS_CAN_10">RHS canard ENGINE RPM [1/min]</field>
-        	<field type="uint16_t" name="ENGINE_RHS_CAN_11">RHS canard ENGINE RPM [1/min]</field>
-        	<field type="uint16_t" name="ENGINE_RHS_CAN_12">RHS canard ENGINE RPM [1/min]</field>
-        	<field type="uint16_t" name="ENGINE_RHS_CAN_20">RHS canard ENGINE RPM [1/min]</field>        	
-        	<field type="uint16_t" name="ENGINE_RHS_CAN_21">RHS canard ENGINE RPM [1/min]</field>
-        	<field type="uint16_t" name="ENGINE_RHS_CAN_22">RHS canard ENGINE RPM [1/min]</field>
-        	<field type="uint16_t" name="ENGINE_LHS_WING_31">LHS wing ENGINE RPM [1/min]</field>
-			<field type="uint16_t" name="ENGINE_LHS_WING_32">LHS wing ENGINE RPM [1/min]</field>
-			<field type="uint16_t" name="ENGINE_LHS_WING_33">LHS wing ENGINE RPM [1/min]</field>
-			<field type="uint16_t" name="ENGINE_LHS_WING_34">LHS wing ENGINE RPM [1/min]</field>
-        	<field type="uint16_t" name="ENGINE_LHS_WING_31">LHS wing ENGINE RPM [1/min]</field>
-			<field type="uint16_t" name="ENGINE_LHS_WING_32">LHS wing ENGINE RPM [1/min]</field>
-			<field type="uint16_t" name="ENGINE_LHS_WING_33">LHS wing ENGINE RPM [1/min]</field>
-			<field type="uint16_t" name="ENGINE_LHS_WING_34">LHS wing ENGINE RPM [1/min]</field>
-        	<field type="uint16_t" name="ENGINE_LHS_WING_31">LHS wing ENGINE RPM [1/min]</field>
-			<field type="uint16_t" name="ENGINE_LHS_WING_32">LHS wing ENGINE RPM [1/min]</field>
-			<field type="uint16_t" name="ENGINE_LHS_WING_33">LHS wing ENGINE RPM [1/min]</field>
-			<field type="uint16_t" name="ENGINE_LHS_WING_34">LHS wing ENGINE RPM [1/min]</field>
-        	<field type="uint16_t" name="ENGINE_RHS_WING_41">RHS wing ENGINE RPM [1/min]</field>
-        	<field type="uint16_t" name="ENGINE_RHS_WING_42">RHS wing ENGINE RPM [1/min]</field>
-        	<field type="uint16_t" name="ENGINE_RHS_WING_43">RHS wing ENGINE RPM [1/min]</field>
-        	<field type="uint16_t" name="ENGINE_RHS_WING_44">RHS wing ENGINE RPM [1/min]</field>
-        	<field type="uint16_t" name="ENGINE_RHS_WING_41">RHS wing ENGINE RPM [1/min]</field>
-        	<field type="uint16_t" name="ENGINE_RHS_WING_42">RHS wing ENGINE RPM [1/min]</field>
-        	<field type="uint16_t" name="ENGINE_RHS_WING_43">RHS wing ENGINE RPM [1/min]</field>
-        	<field type="uint16_t" name="ENGINE_RHS_WING_44">RHS wing ENGINE RPM [1/min]</field>
-        	<field type="uint16_t" name="ENGINE_RHS_WING_41">RHS wing ENGINE RPM [1/min]</field>
-        	<field type="uint16_t" name="ENGINE_RHS_WING_42">RHS wing ENGINE RPM [1/min]</field>
-        	<field type="uint16_t" name="ENGINE_RHS_WING_43">RHS wing ENGINE RPM [1/min]</field>
-        	<field type="uint16_t" name="ENGINE_RHS_WING_44">RHS wing ENGINE RPM [1/min]</field>
+        	<field type="uint16_t" name="ENGINE_LHS_CAN_11_1">LHS canard ENGINE RPM [1/min]</field>
+        	<field type="uint16_t" name="ENGINE_LHS_CAN_11_2">LHS canard ENGINE RPM [1/min]</field>
+        	<field type="uint16_t" name="ENGINE_LHS_CAN_11_3">LHS canard ENGINE RPM [1/min]</field>
+        	<field type="uint16_t" name="ENGINE_LHS_CAN_12_1">LHS canard ENGINE RPM [1/min]</field>
+        	<field type="uint16_t" name="ENGINE_LHS_CAN_12_2">LHS canard ENGINE RPM [1/min]</field>
+        	<field type="uint16_t" name="ENGINE_LHS_CAN_12_3">LHS canard ENGINE RPM [1/min]</field>
+        	<field type="uint16_t" name="ENGINE_RHS_CAN_21_1">RHS canard ENGINE RPM [1/min]</field>
+        	<field type="uint16_t" name="ENGINE_RHS_CAN_21_2">RHS canard ENGINE RPM [1/min]</field>
+        	<field type="uint16_t" name="ENGINE_RHS_CAN_21_3">RHS canard ENGINE RPM [1/min]</field>
+        	<field type="uint16_t" name="ENGINE_RHS_CAN_22_1">RHS canard ENGINE RPM [1/min]</field>        	
+        	<field type="uint16_t" name="ENGINE_RHS_CAN_22_2">RHS canard ENGINE RPM [1/min]</field>
+        	<field type="uint16_t" name="ENGINE_RHS_CAN_22_3">RHS canard ENGINE RPM [1/min]</field>
+        	<field type="uint16_t" name="ENGINE_LHS_WING_31_1">LHS wing ENGINE RPM [1/min]</field>
+			<field type="uint16_t" name="ENGINE_LHS_WING_31_2">LHS wing ENGINE RPM [1/min]</field>
+			<field type="uint16_t" name="ENGINE_LHS_WING_31_3">LHS wing ENGINE RPM [1/min]</field>
+			<field type="uint16_t" name="ENGINE_LHS_WING_32_1">LHS wing ENGINE RPM [1/min]</field>
+        	<field type="uint16_t" name="ENGINE_LHS_WING_32_2">LHS wing ENGINE RPM [1/min]</field>
+			<field type="uint16_t" name="ENGINE_LHS_WING_32_3">LHS wing ENGINE RPM [1/min]</field>
+			<field type="uint16_t" name="ENGINE_LHS_WING_33_1">LHS wing ENGINE RPM [1/min]</field>
+			<field type="uint16_t" name="ENGINE_LHS_WING_33_2">LHS wing ENGINE RPM [1/min]</field>
+        	<field type="uint16_t" name="ENGINE_LHS_WING_33_3">LHS wing ENGINE RPM [1/min]</field>
+			<field type="uint16_t" name="ENGINE_LHS_WING_34_1">LHS wing ENGINE RPM [1/min]</field>
+			<field type="uint16_t" name="ENGINE_LHS_WING_34_2">LHS wing ENGINE RPM [1/min]</field>
+			<field type="uint16_t" name="ENGINE_LHS_WING_34_3">LHS wing ENGINE RPM [1/min]</field>
+        	<field type="uint16_t" name="ENGINE_RHS_WING_41_1">RHS wing ENGINE RPM [1/min]</field>
+        	<field type="uint16_t" name="ENGINE_RHS_WING_41_2">RHS wing ENGINE RPM [1/min]</field>
+        	<field type="uint16_t" name="ENGINE_RHS_WING_41_3">RHS wing ENGINE RPM [1/min]</field>
+        	<field type="uint16_t" name="ENGINE_RHS_WING_42_1">RHS wing ENGINE RPM [1/min]</field>
+        	<field type="uint16_t" name="ENGINE_RHS_WING_42_2">RHS wing ENGINE RPM [1/min]</field>
+        	<field type="uint16_t" name="ENGINE_RHS_WING_42_3">RHS wing ENGINE RPM [1/min]</field>
+        	<field type="uint16_t" name="ENGINE_RHS_WING_43_1">RHS wing ENGINE RPM [1/min]</field>
+        	<field type="uint16_t" name="ENGINE_RHS_WING_43_2">RHS wing ENGINE RPM [1/min]</field>
+        	<field type="uint16_t" name="ENGINE_RHS_WING_43_3">RHS wing ENGINE RPM [1/min]</field>
+        	<field type="uint16_t" name="ENGINE_RHS_WING_44_1">RHS wing ENGINE RPM [1/min]</field>
+        	<field type="uint16_t" name="ENGINE_RHS_WING_44_2">RHS wing ENGINE RPM [1/min]</field>
+        	<field type="uint16_t" name="ENGINE_RHS_WING_44_3">RHS wing ENGINE RPM [1/min]</field>
         </message>
         <message id="184" name="FCL_STATUS">
         	<description>FCL status flags</description>
@@ -142,22 +141,34 @@
         	<field type="uint8_t" name="SWITCH_6">Switch 6 [-]</field>
         	<field type="uint8_t" name="SWITCH_7">Switch 7 [-]</field>
         	<field type="uint8_t" name="SWITCH_8">Switch 8 [-]</field>
-        	<field type="uint8_t" name="SWITCH_9">Switch 9 [-]</field>
-        	<field type="uint8_t" name="SWITCH_10">Switch 10 [-]</field>
-        	<field type="uint8_t" name="SWITCH_11">Switch 11 [-]</field>
-        	<field type="uint8_t" name="SWITCH_12">Switch 12 [-]</field>
         	<field type="uint8_t" name="KNOB_1">Knob 1 [-]</field>
         	<field type="uint8_t" name="KNOB_2">Knob 2 [-]</field>
             <field type="uint8_t" name="KNOB_3">Knob 3 [-]</field>
         	<field type="uint8_t" name="KNOB_4">Knob 4 [-]</field>
         	<field type="uint8_t" name="KNOB_5">Knob 5 [-]</field>
         	<field type="uint8_t" name="KNOB_6">Knob 6 [-]</field>
-        	<field type="uint8_t" name="KNOB_7">Knob 7 [-]</field>
-        	<field type="uint8_t" name="KNOB_8">Knob 8 [-]</field>
-        	<field type="uint8_t" name="KNOB_9">Knob 9 [-]</field>
-        	<field type="uint8_t" name="KNOB_10">Knob 10 [-]</field>
-        	<field type="uint8_t" name="KNOB_11">Knob 11 [-]</field>
-        	<field type="uint8_t" name="KNOB_12">Knob 12 [-]</field>
+        	<field type="uint8_t" name="BUTTON_1">Button 1 [-]</field>
+        	<field type="uint8_t" name="BUTTON_2">Button 2 [-]</field>
+        	<field type="uint8_t" name="BUTTON_3">Button 3 [-]</field>
+        	<field type="uint8_t" name="BUTTON_4">Button 4 [-]</field>
+        	<field type="uint8_t" name="BUTTON_5">Button 5 [-]</field>
+        	<field type="uint8_t" name="BUTTON_6">Button 6 [-]</field>
+        	<field type="uint8_t" name="BUTTON_7">Button 7 [-]</field>
+        	<field type="uint8_t" name="BUTTON_8">Button 8 [-]</field>
+        	<field type="uint8_t" name="BUTTON_9">Button 9 [-]</field>
+        	<field type="uint8_t" name="BUTTON_10">Button 10 [-]</field>
+        	<field type="uint8_t" name="BUTTON_11">Button 11 [-]</field>
+        	<field type="uint8_t" name="BUTTON_12">Button 12 [-]</field>
+        	<field type="uint8_t" name="BUTTON_13">Button 13 [-]</field>
+        	<field type="uint8_t" name="BUTTON_14">Button 14 [-]</field>
+        	<field type="uint8_t" name="BUTTON_15">Button 15 [-]</field>
+        	<field type="uint8_t" name="BUTTON_16">Button 16 [-]</field>
+        	<field type="uint8_t" name="BUTTON_17">Button 17 [-]</field>
+        	<field type="uint8_t" name="BUTTON_18">Button 18 [-]</field>
+        	<field type="uint8_t" name="BUTTON_19">Button 19 [-]</field>
+        	<field type="uint8_t" name="3POS_1">3 Pos switch 1 [-]</field>
+        	<field type="uint8_t" name="SEL_1">Sys ID selector 1 [-]</field>
+        	<field type="uint8_t" name="SEL_2">Sys ID selector 2 [-]</field>
         </message>
         <message id="186" name="XPLANE_DATA">
         	<description>Data returned from X-Plane</description>
@@ -166,6 +177,8 @@
         	<field type="float" name="T_inc_X">Terrain incidence X component (-)</field>
         	<field type="float" name="T_inc_Y">Terrain incidence Y component (-)</field>
         	<field type="float" name="T_inc_Z">Terrain incidence Z component (-)</field>
+        	<field type="uint8_t" name="Terrain_Type">Type of terrain (-)</field>
+        	<field type="float" name="Terrain_Surface_Friction">Coefficient of friction of terrain (-)</field>
         </message>
         <message id="187" name="SIM_CONTROL">
         	<description>Parameters to control the simulation</description>
