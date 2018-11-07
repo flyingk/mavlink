@@ -8,6 +8,7 @@
         <message id="180" name="VEHICLE_STATE">
         	<description>Vehicle state for displays</description>
             <field type="uint32_t" name="time_boot_ms">Timestamp (Simulation time)</field>
+            <field type="float" name="mission_time_s">Mission Time</field>
             <field type="double" name="Lat">Estimated Lat (deg)</field>
             <field type="double" name="Lon">Estimated Lon (deg)</field>
             <field type="float" name="Alt_msl">Estimated Alt above msl (m)</field>
@@ -33,7 +34,6 @@
             <field type="float" name="W_dir">Estimated Wind direction (deg)</field>
             <field type="float" name="Nz">Load factor (-)</field>
             <field type="float" name="Elec_PWR">Current electrical power consumption (kW)</field>
-            <field type="float" name="Energy_used">Total energy consumption (kWh)</field>
         </message>
         <message id="181" name="CONTROL_STICK_FBK">
         	<description>Pilot control inputs as received by the simulation</description>
@@ -173,7 +173,7 @@
         <message id="186" name="XPLANE_DATA">
         	<description>Data returned from X-Plane</description>
         	<field type="uint32_t" name="time_boot_ms">Timestamp (Simulation time)</field>
-        	<field type="float" name="h_AGL">Height above terrain at CG (m)</field>
+        	<field type="float" name="T_h_MSL">Height of terrain above MSL at CG (m)</field>
         	<field type="float" name="T_inc_X">Terrain incidence X component (-)</field>
         	<field type="float" name="T_inc_Y">Terrain incidence Y component (-)</field>
         	<field type="float" name="T_inc_Z">Terrain incidence Z component (-)</field>
@@ -186,6 +186,35 @@
         	<field type="float" name="W_spd">Estimated Wind speed (m/s)</field>
             <field type="float" name="W_dir">Estimated Wind direction (deg)</field>
             <field type="uint8_t" name="Turb_int">Turbulence intensity (-)</field>
+            <field type="uint8_t" name="marker_1">Marker/Signal 1 (-)</field>
+            <field type="uint8_t" name="marker_2">Marker/Signal 2 (-)</field>
+            <field type="uint8_t" name="marker_3">Marker/Signal 3 (-)</field>
+            <field type="uint8_t" name="marker_4">Marker/Signal 4 (-)</field>
+            <field type="uint8_t" name="marker_5">Marker/Signal 5 (-)</field>
+            <field type="uint8_t" name="marker_6">Marker/Signal 6 (-)</field>
+            <field type="uint8_t" name="marker_7">Marker/Signal 7 (-)</field>
+            <field type="uint8_t" name="marker_8">Marker/Signal 8 (-)</field>
+            <field type="uint8_t" name="marker_9">Marker/Signal 9 (-)</field>
+            <field type="uint8_t" name="marker_10">Marker/Signal 10 (-)</field>
+        </message>
+        <message id="188" name="ENERGY_STORAGE">
+        	<description>Battery state and condition</description>
+        	<field type="uint32_t" name="time_boot_ms">Timestamp (Simulation time)</field>
+        	<field type="float" name="Total_Energy_Used">Total energy consumption (kWh)</field>
+        	<field type="float" name="pack1_soc">SoC of battery pack 1 (deg C)</field>
+        	<field type="float" name="pack2_soc">SoC of battery pack 2 (deg C)</field>
+        	<field type="float" name="pack3_soc">SoC of battery pack 3 (deg C)</field>
+        	<field type="float" name="pack1_volt">Voltage of battery pack 1 (deg C)</field>
+        	<field type="float" name="pack2_volt">Voltage of battery pack 2 (deg C)</field>
+        	<field type="float" name="pack3_volt">Voltage of battery pack 3 (deg C)</field>
+        	<field type="float" name="pack1_temp">Temperature of battery pack 1 (deg C)</field>
+        	<field type="float" name="pack2_temp">Temperature of battery pack 2 (deg C)</field>
+        	<field type="float" name="pack3_temp">Temperature of battery pack 3 (deg C)</field>
+        </message>
+        <message id="189" name="MDL_STATUS">
+        	<description>Battery state and condition</description>
+        	<field type="uint32_t" name="time_boot_ms">Timestamp (Simulation time)</field>
+        	<field type="float" name="model_version">build number</field>
         </message>
     </messages>
 </mavlink>
