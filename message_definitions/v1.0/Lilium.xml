@@ -8,11 +8,10 @@
         <message id="180" name="VEHICLE_STATE">
         	<description>Vehicle state for displays</description>
             <field type="uint32_t" name="time_boot_ms">Timestamp (Simulation time)</field>
-            <field type="float" name="mission_time_s">Mission Time</field>
             <field type="double" name="Lat">Estimated Lat (deg)</field>
             <field type="double" name="Lon">Estimated Lon (deg)</field>
             <field type="float" name="Alt_msl">Estimated Alt above msl (m)</field>
-            <field type="float" name="Alt_AGL">Estimated Alt above ground level (m)</field>
+            <field type="float" name="Alt_agl">Estimated Alt above ground level (m)</field>
             <field type="float" name="Pn">Estimated Pn (m)</field>
             <field type="float" name="Pe">Estimated Pe (m)</field>
             <field type="float" name="Pd">Estimated Pd (m)</field>
@@ -28,22 +27,11 @@
             <field type="float" name="Vair">Estimated airspeed [m/s]</field>
             <field type="float" name="AoA">Estimated aoa [deg]</field>
             <field type="float" name="AoS">Estimated sideslip [deg]</field>
-            <field type="uint32_t" name="Pressure">Ambient pressure (Pa)</field>
-            <field type="float" name="Temp">Ambient temperature (C)</field>
             <field type="float" name="W_spd">Estimated Wind speed (m/s)</field>
             <field type="float" name="W_dir">Estimated Wind direction (deg)</field>
-            <field type="float" name="Nz">Load factor (-)</field>
-            <field type="float" name="Elec_PWR">Current electrical power consumption (kW)</field>
+            <field type="float" name="Nz">Load factor Z (-)</field>
         </message>
-        <message id="181" name="CONTROL_STICK_FBK">
-        	<description>Pilot control inputs as received by the simulation</description>
-        	<field type="uint32_t" name="time_boot_ms">Timestamp (Simulation time)</field>
-        	<field type="int16_t" name="STICK_LHS_X">LHS Stick position X [%]</field>
-        	<field type="int16_t" name="STICK_LHS_Y">LHS Stick position Y [%]</field>
-        	<field type="int16_t" name="STICK_RHS_X">RHS Stick position X [%]</field>
-        	<field type="int16_t" name="STICK_RHS_Y">RHS Stick position Y [%]</field>
-        </message>
-        <message id="182" name="FLAP_FEEDBACK">
+        <message id="181" name="FLAP_FEEDBACK">
         	<description>Flap position feedback and status</description>
         	<field type="uint32_t" name="time_boot_ms">Timestamp (Simulation time)</field>
         	<field type="uint16_t" name="FLAP_STATUS">Flap status bitmask [OK/Fail]</field>
@@ -60,7 +48,7 @@
         	<field type="float" name="FLAP_RHS_WING_43">RHS wing flap angle [deg]</field>
         	<field type="float" name="FLAP_RHS_WING_44">RHS wing flap angle [deg]</field>
         </message>
-        <message id="183" name="ENGINE_FEEDBACK">
+        <message id="182" name="ENGINE_FEEDBACK">
         	<description>Engine RPM feedback and status</description>
         	<field type="uint32_t" name="time_boot_ms">Timestamp (Simulation time)</field>
         	<field type="uint64_t" name="ENGINE_STATUS">Engine status bitmask [OK/Fail]</field>
@@ -101,7 +89,7 @@
         	<field type="uint16_t" name="ENGINE_RHS_WING_44_2">RHS wing ENGINE RPM [1/min]</field>
         	<field type="uint16_t" name="ENGINE_RHS_WING_44_3">RHS wing ENGINE RPM [1/min]</field>
         </message>
-        <message id="184" name="FCL_STATUS">
+        <message id="183" name="FCL_STATUS">
         	<description>FCL status flags</description>
             <field type="uint32_t" name="time_boot_ms">Timestamp (Simulation time)</field>
             <field type="uint8_t" name="ARMED">FCL Arming status [-]</field>
@@ -126,7 +114,7 @@
             <field type="uint8_t" name="FCL_15">FCL flag 15 [-]</field>
             <field type="uint8_t" name="FCL_16">FCL flag 16 [-]</field>
         </message>
-        <message id="185" name="PILOT_INPUT_STATION">
+        <message id="184" name="PILOT_INPUT_STATION">
         	<description>Pilot control inputs (to Sim)</description>
         	<field type="uint32_t" name="time_boot_ms">Timestamp (Simulation time)</field>
         	<field type="int16_t" name="STICK_LHS_X">LHS Stick position X [%]</field>
@@ -170,22 +158,44 @@
         	<field type="uint8_t" name="SEL_1">Sys ID selector 1 [-]</field>
         	<field type="uint8_t" name="SEL_2">Sys ID selector 2 [-]</field>
         </message>
-        <message id="186" name="XPLANE_DATA">
+        <message id="185" name="XPLANE_DATA">
         	<description>Data returned from X-Plane</description>
         	<field type="uint32_t" name="time_boot_ms">Timestamp (Simulation time)</field>
-        	<field type="float" name="T_h_MSL">Height of terrain above MSL at CG (m)</field>
+        	<field type="float" name="T_alt_msl">Height of terrain above MSL at CG (m)</field>
         	<field type="float" name="T_inc_X">Terrain incidence X component (-)</field>
         	<field type="float" name="T_inc_Y">Terrain incidence Y component (-)</field>
         	<field type="float" name="T_inc_Z">Terrain incidence Z component (-)</field>
         	<field type="uint8_t" name="Terrain_Type">Type of terrain (-)</field>
         	<field type="float" name="Terrain_Surface_Friction">Coefficient of friction of terrain (-)</field>
         </message>
-        <message id="187" name="SIM_CONTROL">
-        	<description>Parameters to control the simulation</description>
+        <message id="186" name="SIM_CONTROL_INITIAL_STATE">
+        	<description>Parameters to control the simulation initial state</description>
         	<field type="uint32_t" name="time_boot_ms">Timestamp (Simulation time)</field>
-        	<field type="float" name="W_spd">Estimated Wind speed (m/s)</field>
-            <field type="float" name="W_dir">Estimated Wind direction (deg)</field>
-            <field type="uint8_t" name="Turb_int">Turbulence intensity (-)</field>
+            <field type="double" name="Lat">Starting position lat (deg)</field>
+            <field type="double" name="Lon">Starting position lon (deg)</field>
+            <field type="float"  name="Alt_msl">Starting position alt msl (m)</field>
+            <field type="float"  name="Hdg">Initial heading (deg)</field>
+            <field type="float"  name="Vx">Initial speed X body (m/s)</field>
+            <field type="float"  name="Vy">Initial speed Y body (m/s)</field>
+            <field type="float"  name="Vz">Initial speed Z body (m/s)</field>
+            <field type="float"  name="Battery_SoC">Initial battery SoC (Ah)</field>
+            <field type="float"  name="Battery_Temp">Initial battery temp (C)</field>
+            <field type="uint8_t" name="Reset_loc">Reset location (-)</field>
+            <field type="uint8_t" name="Reset_speed">Reset speed (-)</field>
+            <field type="uint8_t" name="Reset_batt">Reset battery state (-)</field>
+        </message>
+        <message id="187" name="SIM_CONTROL_ENVIRONMENT">
+        	<description>Parameters to control the simulation environment</description>
+        	<field type="uint32_t" name="time_boot_ms">Timestamp (Simulation time)</field>
+        	<field type="float" name="W_spd">Set Wind speed (m/s)</field>
+            <field type="float" name="W_dir">Set Wind direction (deg)</field>
+            <field type="uint8_t" name="Turb_int">Set Turbulence intensity (-)</field>
+            <field type="float" name="Ambient_temp">Set ambient temp (C)</field>
+            <field type="float" name="Ambient_press">Set ambient pressure (Pa)</field>
+        </message>
+        <message id="188" name="SIM_CONTROL_EVENTS">
+        	<description>Parameters to trigger simulation events</description>
+        	<field type="uint32_t" name="time_boot_ms">Timestamp (Simulation time)</field>
             <field type="uint8_t" name="marker_1">Marker/Signal 1 (-)</field>
             <field type="uint8_t" name="marker_2">Marker/Signal 2 (-)</field>
             <field type="uint8_t" name="marker_3">Marker/Signal 3 (-)</field>
@@ -197,9 +207,10 @@
             <field type="uint8_t" name="marker_9">Marker/Signal 9 (-)</field>
             <field type="uint8_t" name="marker_10">Marker/Signal 10 (-)</field>
         </message>
-        <message id="188" name="ENERGY_STORAGE">
+        <message id="189" name="ENERGY_STORAGE">
         	<description>Battery state and condition</description>
         	<field type="uint32_t" name="time_boot_ms">Timestamp (Simulation time)</field>
+            <field type="float" name="Elec_PWR">Current electrical power consumption (kW)</field>
         	<field type="float" name="Total_Energy_Used">Total energy consumption (kWh)</field>
         	<field type="float" name="pack1_soc">SoC of battery pack 1 (deg C)</field>
         	<field type="float" name="pack2_soc">SoC of battery pack 2 (deg C)</field>
@@ -211,10 +222,33 @@
         	<field type="float" name="pack2_temp">Temperature of battery pack 2 (deg C)</field>
         	<field type="float" name="pack3_temp">Temperature of battery pack 3 (deg C)</field>
         </message>
-        <message id="189" name="MDL_STATUS">
-        	<description>Battery state and condition</description>
+        <message id="190" name="MDL_INFO">
+        	<description>Model information</description>
         	<field type="uint32_t" name="time_boot_ms">Timestamp (Simulation time)</field>
-        	<field type="float" name="model_version">build number</field>
+        	<field type="float" name="model_version_major">Major version number</field>
+            <field type="float" name="model_version_minor">Minor version number</field>
+        	<field type="float" name="fcl_version">FCL version</field>
+        	<field type="uint8_t" name="hardware">desktop/e-bird</field>
+        	<field type="uint8_t" name="pilot_input">Pilot input hardware</field>
+            <field type="float" name="Weight">Aircraft weight</field>
+            <field type="float" name="X_CG">Aircraft CG location X</field>
+            <field type="float" name="Y_CG">Aircraft CG location Y</field>
+            <field type="float" name="Z_CG">Aircraft CG location Z</field>
+            <field type="uint32_t" name="Pressure">Ambient pressure (Pa)</field>
+            <field type="float" name="Temp">Ambient temperature (C)</field>
+            <field type="float" name="mission_time_s">Mission Time</field>
+        </message>
+        <message id="191" name="HACKJOB">
+        	<description>temporary data transfer</description>
+        	<field type="uint32_t" name="time_boot_ms">Timestamp (Simulation time)</field>
+        	<field type="double" name="ch0">ch0</field>
+        	<field type="double" name="ch1">ch1</field>
+        	<field type="double" name="ch2">ch2</field>
+        	<field type="double" name="ch3">ch3</field>
+        	<field type="double" name="ch4">ch4</field>
+        	<field type="double" name="ch5">ch5</field>
+        	<field type="double" name="ch6">ch6</field>
+        	<field type="double" name="ch7">ch7</field>
         </message>
     </messages>
 </mavlink>
