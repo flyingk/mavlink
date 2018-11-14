@@ -154,7 +154,7 @@
         	<field type="uint8_t" name="BUTTON_17">Button 17 [-]</field>
         	<field type="uint8_t" name="BUTTON_18">Button 18 [-]</field>
         	<field type="uint8_t" name="BUTTON_19">Button 19 [-]</field>
-        	<field type="uint8_t" name="3POS_1">3 Pos switch 1 [-]</field>
+        	<field type="uint8_t" name="THREE_POS_1">3 Pos switch 1 [-]</field>
         	<field type="uint8_t" name="SEL_1">Sys ID selector 1 [-]</field>
         	<field type="uint8_t" name="SEL_2">Sys ID selector 2 [-]</field>
         </message>
