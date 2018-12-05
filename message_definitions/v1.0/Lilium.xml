@@ -204,11 +204,11 @@
             <field type="int8_t" name="p_var_1">Marker/Signal 7 (-)</field>
             <field type="int8_t" name="p_var_2">Marker/Signal 8 (-)</field>
             <field type="int8_t" name="p_var_3">Marker/Signal 9 (-)</field>
-            <field type="uint8_t" name="malfun_1">Engine Out (-)</field>
-            <field type="uint8_t" name="malfun_2">Flap Frozen (-)</field>
-            <field type="uint8_t" name="malfun_3">Flap Floating (-)</field>
-            <field type="uint8_t" name="malfun_4">Marker/Signal 13 (-)</field>
-            <field type="uint8_t" name="malfun_5">Marker/Signal 14 (-)</field>
+            <field type="uint8_t" name="m_engine_out">Engine Out (-)</field>
+            <field type="uint8_t" name="m_flap_stuck">Flap Frozen (-)</field>
+            <field type="uint8_t" name="m_flap_float">Flap Floating (-)</field>
+            <field type="uint8_t" name="m_gps">GPS loss (-)</field>
+            <field type="uint8_t" name="m_rc">RC loss (-)</field>
             <field type="uint8_t" name="malfun_6">Marker/Signal 15 (-)</field>
             <field type="uint8_t" name="malfun_7">Marker/Signal 16 (-)</field>
             <field type="uint8_t" name="malfun_8">Marker/Signal 17 (-)</field>
