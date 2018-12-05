@@ -27,8 +27,6 @@
             <field type="float" name="Vair">Estimated airspeed [m/s]</field>
             <field type="float" name="AoA">Estimated aoa [deg]</field>
             <field type="float" name="AoS">Estimated sideslip [deg]</field>
-            <field type="float" name="W_spd">Estimated Wind speed (m/s)</field>
-            <field type="float" name="W_dir">Estimated Wind direction (deg)</field>
             <field type="float" name="Nz">Load factor Z (-)</field>
         </message>
         <message id="181" name="FLAP_FEEDBACK">
@@ -93,19 +91,17 @@
         	<description>FCL status flags</description>
             <field type="uint32_t" name="time_boot_ms">Timestamp (Simulation time)</field>
             <field type="uint8_t" name="ARMED">FCL Arming status [-]</field>
-        	<field type="uint8_t" name="GEAR">Landing gear status [-]</field>
         	<field type="uint8_t" name="FCL_MODE_LON">FCL longitudinal mode [-]</field>
         	<field type="uint8_t" name="FCL_MODE_LAT">FCL lateral mode [-]</field>
-        	<field type="uint8_t" name="AERO_MDL_STATUS">Aero model status flag [-]</field>
             <field type="uint8_t" name="FCL_GROUND_PROX">FCL flag 1 [-]</field>
             <field type="uint8_t" name="FCL_ON_GROUND">FCL flag 2 [-]</field>
             <field type="uint8_t" name="FCL_RC_LOSS">FCL flag 3 [-]</field>
             <field type="uint8_t" name="FCL_POS_HOLD">FCL flag 4 [-]</field>
-            <field type="uint8_t" name="FCL_NIW">FCL flag 5 [-]</field>
+            <field type="uint8_t" name="FCL_NOSE_IN_WIND">FCL flag 5 [-]</field>
             <field type="uint8_t" name="FCL_TEST_MODE">FCL flag 6 [-]</field>
-            <field type="uint8_t" name="FCL_7">FCL flag 7 [-]</field>
-            <field type="uint8_t" name="FCL_8">FCL flag 8 [-]</field>
-            <field type="uint8_t" name="FCL_9">FCL flag 9 [-]</field>
+            <field type="uint8_t" name="FCL_MOMENT_PRIO">FCL flag 7 [-]</field>
+            <field type="uint8_t" name="FCL_ART_DRAG">FCL flag 8 [-]</field>
+            <field type="uint8_t" name="FCL_LANDED">FCL flag 9 [-]</field>
             <field type="uint8_t" name="FCL_10">FCL flag 10 [-]</field>
             <field type="uint8_t" name="FCL_11">FCL flag 11 [-]</field>
             <field type="uint8_t" name="FCL_12">FCL flag 12 [-]</field>
@@ -113,6 +109,9 @@
             <field type="uint8_t" name="FCL_14">FCL flag 14 [-]</field>
             <field type="uint8_t" name="FCL_15">FCL flag 15 [-]</field>
             <field type="uint8_t" name="FCL_16">FCL flag 16 [-]</field>
+            <field type="float" name="FCL_Vair">Estimated airspeed [m/s]</field>
+        	<field type="float" name="FCL_W_spd">Estimated Wind speed (m/s)</field>
+            <field type="float" name="FCL_W_dir">Estimated Wind direction (deg)</field>
         </message>
         <message id="184" name="PILOT_INPUT_STATION">
         	<description>Pilot control inputs (to Sim)</description>
@@ -162,10 +161,10 @@
         	<description>Data returned from X-Plane</description>
         	<field type="uint32_t" name="time_boot_ms">Timestamp (Simulation time)</field>
         	<field type="float" name="T_alt_msl">Height of terrain above MSL at CG (m)</field>
-        	<field type="float" name="T_inc_X">Terrain incidence X component (-)</field>
-        	<field type="float" name="T_inc_Y">Terrain incidence Y component (-)</field>
-        	<field type="float" name="T_inc_Z">Terrain incidence Z component (-)</field>
-        	<field type="uint8_t" name="Terrain_Type">Type of terrain (-)</field>
+        	<field type="float" name="T_inc_N">Terrain incidence N component (-)</field>
+        	<field type="float" name="T_inc_E">Terrain incidence E component (-)</field>
+        	<field type="float" name="T_inc_D">Terrain incidence D component (-)</field>
+        	<field type="int8_t" name="Terrain_Type">Type of terrain (-)</field>
         	<field type="float" name="Terrain_Surface_Friction">Coefficient of friction of terrain (-)</field>
         </message>
         <message id="186" name="SIM_CONTROL_INITIAL_STATE">
@@ -196,16 +195,25 @@
         <message id="188" name="SIM_CONTROL_EVENTS">
         	<description>Parameters to trigger simulation events</description>
         	<field type="uint32_t" name="time_boot_ms">Timestamp (Simulation time)</field>
-            <field type="uint8_t" name="marker_1">Marker/Signal 1 (-)</field>
-            <field type="uint8_t" name="marker_2">Marker/Signal 2 (-)</field>
-            <field type="uint8_t" name="marker_3">Marker/Signal 3 (-)</field>
-            <field type="uint8_t" name="marker_4">Marker/Signal 4 (-)</field>
-            <field type="uint8_t" name="marker_5">Marker/Signal 5 (-)</field>
-            <field type="uint8_t" name="marker_6">Marker/Signal 6 (-)</field>
-            <field type="uint8_t" name="marker_7">Marker/Signal 7 (-)</field>
-            <field type="uint8_t" name="marker_8">Marker/Signal 8 (-)</field>
-            <field type="uint8_t" name="marker_9">Marker/Signal 9 (-)</field>
-            <field type="uint8_t" name="marker_10">Marker/Signal 10 (-)</field>
+            <field type="uint8_t" name="marker">Marker (-)</field>
+            <field type="uint8_t" name="event_1">Marker/Signal 2 (-)</field>
+            <field type="uint8_t" name="event_2">Marker/Signal 3 (-)</field>
+            <field type="uint8_t" name="event_3">Marker/Signal 4 (-)</field>
+            <field type="uint8_t" name="event_4">Marker/Signal 5 (-)</field>
+            <field type="uint8_t" name="event_5">Marker/Signal 6 (-)</field>
+            <field type="int8_t" name="p_var_1">Marker/Signal 7 (-)</field>
+            <field type="int8_t" name="p_var_2">Marker/Signal 8 (-)</field>
+            <field type="int8_t" name="p_var_3">Marker/Signal 9 (-)</field>
+            <field type="uint8_t" name="malfun_1">Engine Out (-)</field>
+            <field type="uint8_t" name="malfun_2">Flap Frozen (-)</field>
+            <field type="uint8_t" name="malfun_3">Flap Floating (-)</field>
+            <field type="uint8_t" name="malfun_4">Marker/Signal 13 (-)</field>
+            <field type="uint8_t" name="malfun_5">Marker/Signal 14 (-)</field>
+            <field type="uint8_t" name="malfun_6">Marker/Signal 15 (-)</field>
+            <field type="uint8_t" name="malfun_7">Marker/Signal 16 (-)</field>
+            <field type="uint8_t" name="malfun_8">Marker/Signal 17 (-)</field>
+            <field type="uint8_t" name="malfun_9">Marker/Signal 18 (-)</field>
+            <field type="uint8_t" name="malfun_10">Marker/Signal 19 (-)</field>
         </message>
         <message id="189" name="ENERGY_STORAGE">
         	<description>Battery state and condition</description>
@@ -237,6 +245,10 @@
             <field type="uint32_t" name="Pressure">Ambient pressure (Pa)</field>
             <field type="float" name="Temp">Ambient temperature (C)</field>
             <field type="float" name="mission_time_s">Mission Time</field>
+            <field type="float" name="W_spd">Wind speed (m/s)</field>
+            <field type="float" name="W_dir">Wind direction (deg)</field>
+            <field type="uint8_t" name="AERO_MDL_STATUS">Aero model status flag [-]</field>
+            <field type="uint8_t" name="GEAR">Landing gear status [-]</field>
         </message>
         <message id="191" name="HACKJOB">
         	<description>temporary data transfer</description>
