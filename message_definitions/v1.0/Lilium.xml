@@ -262,5 +262,51 @@
         	<field type="double" name="ch6">ch6</field>
         	<field type="double" name="ch7">ch7</field>
         </message>
+        <message id="192" name="PILOT_INPUT_STATION_2">
+        	<description>Pilot control inputs (exact mapping)</description>
+        	<field type="uint32_t" name="time_boot_ms">Timestamp (Simulation time)</field>
+        	<field type="int16_t" name="STICK_LHS_X">LHS Stick position X [%]</field>
+        	<field type="int16_t" name="STICK_LHS_Y">LHS Stick position Y [%]</field>
+        	<field type="uint8_t" name="STICK_LHS_TG">Trigger SW LHS [-]</field>
+        	<field type="int16_t" name="STICK_RHS_X">RHS Stick position X [%]</field>
+        	<field type="int16_t" name="STICK_RHS_Y">RHS Stick position Y [%]</field>
+        	<field type="uint8_t" name="STICK_RHS_TG">Trigger SW RHS [-]</field>
+        	<field type="uint8_t" name="SWITCH_1">Switch 1 [-]</field>
+        	<field type="uint8_t" name="SWITCH_2">Switch 2 [-]</field>
+            <field type="uint8_t" name="SWITCH_3">Switch 3 [-]</field>
+        	<field type="uint8_t" name="SWITCH_4">Switch 4 [-]</field>
+        	<field type="uint8_t" name="SWITCH_5">Switch 5 [-]</field>
+        	<field type="uint8_t" name="SWITCH_6">Switch 6 [-]</field>
+        	<field type="uint8_t" name="SWITCH_7">Switch 7 [-]</field>
+        	<field type="uint8_t" name="SWITCH_8">Switch 8 [-]</field>
+        	<field type="uint8_t" name="KNOB_1">Knob 1 [-]</field>
+        	<field type="uint8_t" name="KNOB_2">Knob 2 [-]</field>
+            <field type="uint8_t" name="KNOB_3">Knob 3 [-]</field>
+        	<field type="uint8_t" name="KNOB_4">Knob 4 [-]</field>
+        	<field type="uint8_t" name="KNOB_5">Knob 5 [-]</field>
+        	<field type="uint8_t" name="KNOB_6">Knob 6 [-]</field>
+        	<field type="uint8_t" name="BUTTON_1">Button 1 [-]</field>
+        	<field type="uint8_t" name="BUTTON_2">Button 2 [-]</field>
+        	<field type="uint8_t" name="BUTTON_3">Button 3 [-]</field>
+        	<field type="uint8_t" name="BUTTON_4">Button 4 [-]</field>
+        	<field type="uint8_t" name="BUTTON_5">Button 5 [-]</field>
+        	<field type="uint8_t" name="BUTTON_6">Button 6 [-]</field>
+        	<field type="uint8_t" name="BUTTON_7">Button 7 [-]</field>
+        	<field type="uint8_t" name="BUTTON_8">Button 8 [-]</field>
+        	<field type="uint8_t" name="BUTTON_9">Button 9 [-]</field>
+        	<field type="uint8_t" name="BUTTON_10">Button 10 [-]</field>
+        	<field type="uint8_t" name="BUTTON_11">Button 11 [-]</field>
+        	<field type="uint8_t" name="BUTTON_12">Button 12 [-]</field>
+        	<field type="uint8_t" name="BUTTON_13">Button 13 [-]</field>
+        	<field type="uint8_t" name="BUTTON_14">Button 14 [-]</field>
+        	<field type="uint8_t" name="BUTTON_15">Button 15 [-]</field>
+        	<field type="uint8_t" name="BUTTON_16">Button 16 [-]</field>
+        	<field type="uint8_t" name="BUTTON_17">Button 17 [-]</field>
+        	<field type="uint8_t" name="BUTTON_18">Button 18 [-]</field>
+        	<field type="uint8_t" name="BUTTON_19">Button 19 [-]</field>
+        	<field type="uint8_t" name="THREE_POS_1">3 Pos switch 1 [-]</field>
+        	<field type="uint8_t" name="SEL_1">Sys ID selector 1 [-]</field>
+        	<field type="uint8_t" name="SEL_2">Sys ID selector 2 [-]</field>
+        </message>
     </messages>
 </mavlink>
