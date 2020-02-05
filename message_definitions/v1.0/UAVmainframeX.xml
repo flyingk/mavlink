@@ -1,0 +1,428 @@
+<?xml version='1.0'?>
+<mavlink>
+    <include>common.xml</include>
+    <version>3</version>
+    <!--Version 4.0 -->
+    <enums>
+        <enum name="UAVmainframe_MODE">
+        <!-- custom mode field layout: 8 bit flags, 8 bit sub modes, 16 bit modes -->
+			<description>UAVmainframe-specific flight modes, sent as custom modes.</description>
+			<entry value="0" name="UAVmainframe_MODE_PREFLIGHT">
+				<description>Vehicle not armed and starting up.</description>
+			</entry>
+			<entry value="1" name="UAVmainframe_MODE_MANUAL">
+				<description>(Bit 1) Vehicle is in manual control mode. RC control direct feed through with relays disengaged.</description>
+			</entry>
+			<entry value="2" name="UAVmainframe_MODE_PASSTHROUGH">
+				<description>(Bit 2) Vehicle is in manual control mode. RC control passed through UAVmainframe with relays engaged.</description>
+			</entry>
+			<entry value="4" name="UAVmainframe_MODE_STABILISE">
+				<description>(Bit 3) Vehicle is in stabilise mode, low level attitude controllers engaged.</description>
+			</entry>
+			<entry value="8" name="UAVmainframe_MODE_TECS">
+				<description>(Bit 4) Vehicle is in altitude/speed hold mode.</description>
+			</entry>
+			<entry value="16" name="UAVmainframe_MODE_AUTO">
+				<description>(Bit 5) Vehicle is running in auto mode with onboard guidance.</description>
+			</entry>
+			<entry value="32" name="UAVmainframe_MODE_INPUT">
+				<description>(Bit 6) Vehicle is executing test inputs automatically.</description>
+			</entry>
+        </enum>
+        <enum name="UAVmainframe_AUTO_SUB_MODES">
+            <entry value="0" name="UAVmainframe_AUTO_SUB_MODE_DEFAULT">
+                <description>Vehicle is in undefined auto mode.</description>
+            </entry>
+			<entry value="1" name="UAVmainframe_AUTO_SUB_MODE_RETURN_HOME">
+				<description>(Bit 1) Vehicle is commanded to return to home position at specified altitude.</description>
+			</entry>
+        </enum>
+        <enum name="UAVmainframe_INPUT_SUB_MODES">
+            <entry value="0" name="UAVmainframe_INPUT_SUB_MODE_DEFAULT">
+                <description>Undefined input.</description>
+            </entry>
+        	<entry value="1" name="UAVmainframe_INPUT_SUB_MODE_ELEVATOR">
+				<description>(Bit 1) Elevator input.</description>
+			</entry>
+			<entry value="2" name="UAVmainframe_INPUT_SUB_MODE_RUDDER">
+				<description>(Bit 2) Rudder input.</description>
+			</entry>
+			<entry value="4" name="UAVmainframe_INPUT_SUB_MODE_AILERON">
+				<description>(Bit 3) Aileron input.</description>
+			</entry>
+			<entry value="8" name="UAVmainframe_INPUT_SUB_MODE_THROTTLE">
+				<description>(Bit 4) Throttle input.</description>
+			</entry>
+        </enum>
+        <enum name="UAVmainframe_TECS_INPUT_SUB_MODES">
+            <entry value="0" name="UAVmainframe_TECS_INPUT_SUB_MODE_DEFAULT">
+                <description>Undefined TECS input.</description>
+            </entry>
+			<entry value="1" name="UAVmainframe_TECS_INPUT_SUB_MODE_GLIDE">
+				<description>(Bit 1) Glide mode.</description>
+			</entry>
+			<entry value="2" name="UAVmainframe_TECS_INPUT_SUB_MODE_ACCEL">
+				<description>(Bit 2) Constant altitude acceleration mode.</description>
+			</entry>
+			<entry value="4" name="UAVmainframe_TECS_INPUT_SUB_MODE_TURN">
+				<description>(Bit 3) Constant altitude and speed turning mode.</description>
+			</entry>
+        </enum>
+        <enum name="UAVmainframe_MODE_FLAGS">
+            <entry value="0" name="UAVmainframe_MODE_FLAG_SAFETY_DISARMED">
+                <description>UAVmainframe safety set to disarmed.</description>
+            </entry>
+            <entry value="1" name="UAVmainframe_MODE_FLAG_SAFETY_ARMED">
+                <description>(Bit 1) UAVmainframe safety set to armed. Motors are enabled / running / can start. Ready to fly.</description>
+            </entry>
+            <entry value="2" name="UAVmainframe_MODE_FLAG_FLIGHT_SIM">
+                <description>(Bit 2) UAVmainframe in flight sim mode</description>
+            </entry>
+            <entry value="4" name="UAVmainframe_MODE_FLAG_INPUT_CLOSED_LOOP">
+                <description>(Bit 3) Vehicle is executing closed loop test inputs</description>
+            </entry>
+            <entry value="8" name="UAVmainframe_MODE_FLAG_TECS_INPUT_SETUP">
+                <description>(Bit 4) Vehicle is in performance test setup mode</description>
+            </entry>
+        </enum>
+    </enums>
+    <!-- MESSAGE IDs 180 - 240: Space for custom messages in individual projectname_messages.xml files -->
+    <messages>
+        <message id="180" name="EULER_DEBUG">
+            <description>Attitude data from the IMU EKF and the wind tunnel gimbal.</description>
+            <field type="uint32_t" name="time_boot_ms">Time since boot in msec</field>
+            <field type="float" name="IMU_roll">IMU roll in deg</field>
+            <field type="float" name="IMU_pitch">IMU pitch in deg</field>
+            <field type="float" name="IMU_yaw">IMU yaw in deg</field>
+            <field type="float" name="GBL_roll">Gimbal roll in deg</field>
+            <field type="float" name="GBL_pitch">Gimbal pitch in deg</field>
+            <field type="float" name="GBL_yaw">Gimbal yaw in deg</field>
+        </message>
+        <message id="181" name="AIRDATA">
+            <description>Data from the airdata sensors.</description>
+            <field type="uint32_t" name="time_boot_ms">Time since boot in msec</field>
+            <field type="float" name="pressure_alt">Altitude above ground in m</field>
+            <field type="float" name="airspeed">Airspeed in m/s</field>
+            <field type="float" name="aoa">True angle of attack in deg</field>
+            <field type="float" name="sideslip">True angle of sideslip in deg</field>
+        </message>
+        <message id="182" name="AIRDATA_5_hole">
+            <description>Data from the 5-hole probe airdata sensors.</description>
+            <field type="uint32_t" name="time_boot_ms">Time since boot in msec</field>
+            <field type="uint16_t" name="dynamic_pressure">Dynamic pressure in Pa</field>
+            <field type="float" name="density">air density</field>
+            <field type="int8_t" name="temperature">Temperature in deg C</field>
+            <field type="float" name="DP1">Differential Pressure 1</field>
+            <field type="float" name="DP2">Differential Pressure 2</field>
+            <field type="float" name="DP3">Differential Pressure 3</field>
+        </message>
+        <message id="183" name="CONTROL_FEEDBACK">
+            <description>Data from the control feedback sensors.</description>
+            <field type="uint32_t" name="time_boot_ms">Time since boot in msec</field>
+            <field type="float" name="elevator">Elevator angle in deg</field>
+            <field type="float" name="rudder">Rudder angle in deg</field>
+            <field type="float" name="aileron">Aileron angle in deg</field>
+            <field type="float" name="Thrust_1">Thrust engine 1 in kg</field>
+            <field type="float" name="ctrl_aux_2">Aux channel 2 in deg</field>
+            <field type="float" name="ctrl_aux_3">Aux channel 3 in deg</field>
+        </message>
+        <message id="184" name="PROPULSION">
+            <description>Data from the motor sensors.</description>
+            <field type="uint32_t" name="time_boot_ms">Time since boot in msec</field>
+            <field type="float" name="motor_volt">Motor Volts</field>
+            <field type="float" name="motor_amp">Motor Amps</field>
+            <field type="uint16_t" name="motor_rpm">RPM</field>
+            <field type="uint16_t" name="motor_watt">Motor Watts</field>
+            <field type="uint8_t" name="motor_temp">Motor temp in deg C</field>
+            <field type="uint16_t" name="motor_thrust">Thrust from loadcell</field>
+            <field type="uint16_t" name="motor_torque">Torque from loadcell</field>
+        </message>
+        <message id="185" name="POWER">
+            <description>Data from onboard power systems</description>
+            <field type="uint32_t" name="time_boot_ms">Time since boot in msec</field>
+            <field type="float" name="Avionics_Volt">FDR Batt Volts</field>
+            <field type="uint16_t" name="Avionics_mA">FDR Amps*1000</field>
+            <field type="uint16_t" name="Avionics_mAh">FDR Batt capacity used</field>
+            <field type="uint8_t" name="Avionics_Batt">FDR Batt capacity remaining</field>
+            <field type="float" name="Servo_Volt">Servo Amps</field>
+            <field type="uint16_t" name="Servo_mA">Servo Amps *1000</field>
+            <field type="uint16_t" name="Main_mAh">Main Batt capacity used</field>
+            <field type="uint8_t" name="Main_Batt">Main Batt capacity remaining</field>
+            <field type="float" name="Shunt_temp">Shunt temp in deg C</field>
+        </message>
+        <message id="186" name="SERVO_NODE">
+            <description>Servo relay status.</description>
+            <field type="uint32_t" name="time_boot_ms">Time since boot in msec</field>
+            <field type="int8_t" name="relay_ch_1">Relay status channel 1 (on/off)</field>
+            <field type="int8_t" name="relay_ch_2">Relay status channel 2 (on/off)</field>
+            <field type="int8_t" name="relay_ch_3">Relay status channel 3 (on/off)</field>
+            <field type="int8_t" name="relay_ch_4">Relay status channel 4 (on/off)</field>
+            <field type="int8_t" name="relay_ch_5">Relay status channel 5 (on/off)</field>
+            <field type="int8_t" name="relay_ch_6">Relay status channel 6 (on/off)</field>
+            <field type="uint8_t" name="RC_ch9">RC signal for override switch</field>
+            <field type="uint8_t" name="Override_SW">Override switch feedback</field>
+        </message>
+        <message id="187" name="IMU_DEBUG">
+            <description>IMU readings for the usual 9DOF sensor setup</description>
+            <field type="uint32_t" name="time_boot_ms">Timestamp (milliseconds since system boot)</field>
+            <field type="int16_t" name="Ax">X acceleration (mg)</field>
+            <field type="int16_t" name="Ay">Y acceleration (mg)</field>
+            <field type="int16_t" name="Az">Z acceleration (mg)</field>
+            <field type="int16_t" name="Gx_u">Uncomp. Angular rate X axis (deg/sec)</field>
+            <field type="int16_t" name="Gy_u">Uncomp. Angular rate Y axis (deg/sec)</field>
+            <field type="int16_t" name="Gz_u">Uncomp. Angular rate Z axis (deg/sec)</field>
+            <field type="int16_t" name="Mx">X Magnetic field (Mx*1000)</field>
+            <field type="int16_t" name="My">Y Magnetic field (My*1000)</field>
+            <field type="int16_t" name="Mz">Z Magnetic field (Mz*1000)</field>
+            <field type="int8_t" name="IMU_temp">IMU Temp</field>
+        </message>
+        <message id="188" name="ACCEL_DEBUG">
+            <description>Accelerometers</description>
+            <field type="uint32_t" name="time_boot_ms">Timestamp (milliseconds since system boot)</field>
+            <field type="int16_t" name="imu_ax">X acceleration (mg)</field>
+            <field type="int16_t" name="imu_ay">Y acceleration (mg)</field>
+            <field type="int16_t" name="imu_az">Z acceleration (mg)</field>
+            <field type="int16_t" name="tail_ax">X acceleration (mg)</field>
+            <field type="int16_t" name="tail_ay">Y acceleration (mg)</field>
+            <field type="int16_t" name="tail_az">Z acceleration (mg)</field>
+            <field type="int16_t" name="wing_ax">X acceleration (mg)</field>
+            <field type="int16_t" name="wing_ay">Y acceleration (mg)</field>
+            <field type="int16_t" name="wing_az">Z acceleration (mg)</field>
+            <field type="int16_t" name="aird_ax">X acceleration (mg)</field>
+            <field type="int16_t" name="aird_ay">Y acceleration (mg)</field>
+            <field type="int16_t" name="aird_az">Z acceleration (mg)</field>
+        </message>
+        <message id="189" name="MAG_DEBUG">
+            <description>Magnetometers</description>
+            <field type="uint32_t" name="time_boot_ms">Timestamp (milliseconds since system boot)</field>
+            <field type="int16_t" name="imu_mx">X Magnetic field (Mx*1000)</field>
+            <field type="int16_t" name="imu_my">Y Magnetic field (My*1000)</field>
+            <field type="int16_t" name="imu_mz">Z Magnetic field (Mz*1000)</field>
+            <field type="int16_t" name="tail_mx">X Magnetic field (Mx*1000)</field>
+            <field type="int16_t" name="tail_my">Y Magnetic field (My*1000)</field>
+            <field type="int16_t" name="tail_mz">Z Magnetic field (Mz*1000)</field>
+            <field type="int16_t" name="wing_mx">X Magnetic field (Mz*1000)</field>
+            <field type="int16_t" name="wing_my">Y Magnetic field (Mz*1000)</field>
+            <field type="int16_t" name="wing_mz">Z Magnetic field (Mz*1000)</field>
+        </message>
+        <message id="190" name="FDR_STATUS">
+            <description>Status of FDR and Sensors</description>
+            <field type="uint32_t" name="time_boot_ms">Timestamp (milliseconds since system boot)</field>
+            <field type="uint8_t" name="GPS_SAT">Satnum</field>
+            <field type="uint8_t" name="GPS_FIX">2d/3d fix</field>
+            <field type="uint8_t" name="GPS_HDOP">gps hdop</field>
+            <field type="uint8_t" name="GPS_VDOP">gps vdop</field>
+            <field type="uint8_t" name="VN200_SAT">Satnum VN200</field>
+            <field type="uint8_t" name="VN200_FIX">Fix VN200</field>
+            <field type="uint8_t" name="VN200_Status">Filter status VN200</field>
+            <field type="uint8_t" name="Radio_txbuff">On board radio tx buffer</field>
+            <field type="uint8_t" name="PWR_Gains">Binary gains feedback</field>
+            <field type="uint8_t" name="CPU_load">CPU load</field>
+        </message>
+        <message id="191" name="Longitudinal">
+            <description>Status of FDR and Sensors</description>
+            <field type="uint32_t" name="time_boot_ms">Timestamp (milliseconds since system boot)</field>
+            <field type="float" name="AoA_cal">Calibrated angle of attack</field>
+            <field type="float" name="q">pitchrate</field>
+            <field type="float" name="ax">Ax (mg)</field>
+            <field type="float" name="az">Az (mg)</field>
+            <field type="float" name="IMU_pitch">theta</field>
+            <field type="float" name="GBL_pitch">theta</field>
+            <field type="float" name="elevator">elevator fdbk</field>
+            <field type="float" name="elevator_cmd">Elevator command</field>
+        </message>
+        <message id="192" name="Lateral">
+            <description>Status of FDR and Sensors</description>
+            <field type="uint32_t" name="time_boot_ms">Timestamp (milliseconds since system boot)</field>
+            <field type="float" name="Beta">Sideslip</field>
+            <field type="float" name="p">roll rate</field>
+            <field type="float" name="r">yaw rate</field>
+            <field type="float" name="ay">Ay (mg)</field>
+            <field type="float" name="IMU_roll">phi</field>
+            <field type="float" name="IMU_yaw">psi</field>
+            <field type="float" name="GBL_roll">phi</field>
+            <field type="float" name="GBL_yaw">psi</field>
+            <field type="float" name="Rudder">rudder fdbk</field>
+            <field type="float" name="Aileron">aileron fdbk</field>
+            <field type="float" name="Rudder_cmd">Rudder command</field>
+            <field type="float" name="Aileron_cmd">Aileron command</field>
+        </message>
+        <message id="193" name="WEATHER">
+            <description>Weather station data</description>
+            <field type="uint32_t" name="time_boot_ms">Timestamp (milliseconds since system boot)</field>
+            <field type="float" name="Wind_speed">Wind speed in m/s</field>
+            <field type="float" name="Wind_dir">Wind direction in deg</field>
+            <field type="float" name="Temp">Ground temp in C</field>
+            <field type="float" name="Pressure">Ground air pressure in Pa</field>
+            <field type="float" name="Density">Ground air density in kg/m3</field>
+            <field type="uint8_t" name="Beaufort">Wind in Beaufort scale</field>
+        </message>
+        <message id="194" name="SPEKTRUM_LINK">
+            <description>Status of FDR and Sensors</description>
+            <field type="uint32_t" name="time_boot_ms">Timestamp (milliseconds since system boot)</field>
+            <field type="uint8_t" name="Holds">Number of failsave events</field>
+            <field type="uint16_t" name="Frame_loss">Lost Frames</field>
+            <field type="uint16_t" name="Fade_main">Main link loss</field>
+            <field type="uint16_t" name="Fade_sat_1">Sat 1 link loss</field>
+            <field type="uint16_t" name="Fade_sat_2">Sat 2 link loss</field>
+            <field type="uint16_t" name="Fade_sat_3">Sat 3 link loss</field>
+        </message>
+        <message id="195" name="FUEL_CELL">
+            <description>Status of FDR and Sensors</description>
+            <field type="uint32_t" name="time_boot_ms">Timestamp (milliseconds since system boot)</field>
+            <field type="uint16_t" name="FC_Volt">Fuel cell voltage</field>
+            <field type="uint16_t" name="FC_Amp">Fuel cell current</field>
+            <field type="uint16_t" name="FC_temp">Fuel cell temperature</field>
+            <field type="uint16_t" name="FC_Aux_V1">Aux1 voltage</field>
+            <field type="uint16_t" name="FC_Aux_A1">Aux1 current</field>
+        </message>
+        <message id="196" name="FUEL_CELL_DETAIL">
+            <description>Status of FDR and Sensors</description>
+            <field type="uint32_t" name="time_boot_ms">Timestamp (milliseconds since system boot)</field>
+            <field type="uint16_t" name="FC_Aux_V2">Aux2 voltage</field>
+            <field type="uint16_t" name="FC_Aux_A2">Aux2 current</field>
+            <field type="uint16_t" name="FC_Aux_V3">Aux3 voltage</field>
+            <field type="uint16_t" name="FC_Aux_A3">Aux3 current</field>
+            <field type="uint16_t" name="FC_Mass_flow">Aux current</field>
+            <field type="uint16_t" name="FC_Pressure">Fuel cell voltage</field>
+            <field type="uint16_t" name="FC_Airflow">Fuel cell current</field>
+            <field type="uint16_t" name="FC_RPM_1">Fuel cell temperature</field>
+            <field type="uint16_t" name="FC_RPM_2">Aux voltage</field>
+        </message>
+        <message id="197" name="PID_TUNE">
+            <description>PID Controller data for tuning</description>
+            <field type="uint32_t" name="time_boot_ms">Timestamp (milliseconds since system boot)</field>
+            <field type="float" name="Cmd_In">Input command</field>
+            <field type="float" name="Sensor_Fbk">Feedback data</field>
+            <field type="float" name="Cmd_Out">Output command</field>
+            <field type="float" name="Kp">Proportional control component</field>
+            <field type="float" name="Ki">Integral control component</field>
+            <field type="float" name="Kd">Differential control component</field>
+        </message>
+        <message id="198" name="VEHICLE_STATE">
+        	<description>EKF state estimate</description>
+            <field type="uint32_t" name="time_boot_ms">Timestamp (milliseconds since system boot)</field>
+            <field type="int16_t" name="N">Estimated Pn (m)</field>
+            <field type="int16_t" name="E">Estimated Pe (m)</field>
+            <field type="int16_t" name="D">Estimated Pd (m)</field>
+            <field type="float" name="u">Estimated body axis x-vel (m/sec)</field>
+            <field type="float" name="v">Estimated body axis y-vel (m/sec)</field>
+            <field type="float" name="w">Estimated body axis z-vel (m/sec)</field>
+            <field type="int16_t" name="p">Estimated angular rate X axis (deg/sec)</field>
+            <field type="int16_t" name="q">Estimated angular rate Y axis (deg/sec)</field>
+            <field type="int16_t" name="r">Estimated angular rate Z axis (deg/sec)</field>
+            <field type="float" name="Roll">Estimated roll angle [deg]</field>
+            <field type="float" name="Pitch">Estimated pitch angle [deg]</field>
+            <field type="float" name="Yaw">Estimated yaw angle [deg]</field>
+            <field type="float" name="W_spd">Estimated Wind speed (m/s)</field>
+            <field type="float" name="W_dir">Estimated Wind direction (deg)</field>
+            <field type="float" name="Vair">Estimated airspeed [m/s]</field>
+            <field type="float" name="AoA">Estimated aoa [deg]</field>
+            <field type="float" name="CW">Estimated sideslip [deg]</field>
+        </message>
+        <message id="199" name="EKF_DEBUG">
+        	<description>EKF debug info (bias states..)</description>
+            <field type="uint32_t" name="time_boot_ms">Timestamp (milliseconds since system boot)</field>
+            <field type="int16_t" name="GX_b__mdps">Estimated gyro x bias [deg/s]</field>
+            <field type="int16_t" name="GY_b__mdps">Estimated gyro y bias [deg/s]</field>
+            <field type="int16_t" name="GZ_b__mdps">Estimated gyro z bias [deg/s]</field>
+            <field type="int16_t" name="AX_b__mg">Estimated ax bias [mg]</field>
+            <field type="int16_t" name="AY_b__mg">Estimated ay bias [mg]</field>
+            <field type="int16_t" name="AZ_b__mg">Estimated az bias [mg]</field>
+            <field type="int16_t" name="MX_b__mG">Estimated mx bias [mG]</field>
+            <field type="int16_t" name="MY_b__mG">Estimated my bias [mG]</field>
+            <field type="int16_t" name="MZ_b__mG">Estimated mz bias [mG]</field>
+            <field type="int16_t" name="Vair_b__cmps">Estimated Vair bias [mg]</field>
+            <field type="int16_t" name="AoA_b__mdeg">Estimated aoa bias [mg]</field>
+            <field type="int16_t" name="CW_b__mdeg">Estimated cw bias [mg]</field>
+            <field type="int16_t" name="Alt_b__cm">Estimated alt bias [mg]</field>
+            <field type="int16_t" name="Vair_scale">Estimated Vair scale [mg]</field>
+            <field type="int16_t" name="AoA_scale">Estimated aoa scale [mg]</field>
+            <field type="int16_t" name="CW_scale">Estimated cw scale [mg]</field>
+        </message>
+        <message id="200" name="EKF_Residual">
+            <description>EKF measurement residuals</description>
+            <field type="uint32_t" name="time_boot_ms">Timestamp (milliseconds since system boot)</field>
+            <field type="int16_t" name="Pn__cm">Pn (m)</field>
+            <field type="int16_t" name="Pe__cm">Pe (m)</field>
+            <field type="int16_t" name="Pd__cm">Pd (m)</field>
+            <field type="int16_t" name="Vn__cmps">Vn (m)</field>
+            <field type="int16_t" name="Ve__cmps">Ve (m)</field>
+            <field type="int16_t" name="Vd__cmps">Vd (m)</field>
+            <field type="int16_t" name="Vair__cmps">Estimated Pn (m)</field>
+            <field type="int16_t" name="AoA__mdeg">Estimated Pe (m)</field>
+            <field type="int16_t" name="CW__mdeg">Estimated Pd (m)</field>
+            <field type="int16_t" name="Alt__cm">Estimated Pn (m)</field>
+            <field type="int16_t" name="Mx__mG">Estimated Pe (m)</field>
+            <field type="int16_t" name="My__mG">Estimated Pd (m)</field>
+            <field type="int16_t" name="Mz__mG">Estimated Pd (m)</field>
+        </message>
+        <message id="201" name="TECS_DEBUG">
+        	<description>TECS debug info</description>
+            <field type="uint32_t" name="time_boot_ms">Timestamp (milliseconds since system boot)</field>
+            <field type="float" name="Alt_Dem">Desired altitude [m]</field>
+            <field type="float" name="Spd_Dem">Desired Airspeed [m/s]</field>
+            <field type="float" name="tecs_SPE_dem">SPE_dem</field>
+			<field type="float" name="tecs_SKE_dem">SKE_dem</field>
+			<field type="float" name="tecs_SEB_dem">SEB_dem</field>
+			<field type="float" name="tecs_SPE_est">SPE_est</field>
+			<field type="float" name="tecs_SKE_est">SKE_est</field>
+			<field type="float" name="tecs_SEB_est">SEB_est</field>
+            <field type="float" name="Pitch_Dem">Tecs output pitch demand [deg]</field>
+            <field type="float" name="Thr_Dem">Tecs output throttle demand [%]</field>
+        </message>
+        <message id="202" name="MR_DEBUG">
+        	<description>Multirotor debug info (MattPilot)</description>
+            <field type="uint32_t" name="time_boot_ms">Timestamp (milliseconds since system boot)</field>
+            <field type="uint16_t" name="RPM_1">Motor 1 RPM [1/s]</field>
+            <field type="uint16_t" name="RPM_2">Motor 2 RPM [1/s]</field>
+            <field type="uint16_t" name="RPM_3">Motor 3 RPM [1/s]</field>
+            <field type="uint16_t" name="RPM_4">Motor 4 RPM [1/s]</field>
+            <field type="uint16_t" name="RPM_5">Motor 5 RPM [1/s]</field>
+            <field type="uint16_t" name="RPM_6">Motor 6 RPM [1/s]</field>
+        </message>
+        <!--  UAVmainframe card link - Version 1.0  -->
+        <message id="221" name="THRUST_SENSOR">
+                <description>Data from a thrust measurement load cell</description>
+                <field type="uint32_t" name="time_boot_ms">Time since boot in msec</field>
+                <field type="uint32_t" name="Load_cell">Load cell data</field>
+        </message>
+        <message id="222" name="ATTITUDE_SENSOR">
+                <description>Data from a 9 DoF attitude sensor</description>
+                <field type="uint32_t" name="time_boot_ms">Time since boot in msec</field>
+                <field type="uint64_t" name="utc_time_us">UTC time in usec</field>
+                <field type="float" name="Ax">X acceleration (g)</field>
+				<field type="float" name="Ay">Y acceleration (g)</field>
+				<field type="float" name="Az">Z acceleration (g)</field>
+				<field type="float" name="Gx">Angular rate X axis (deg/sec)</field>
+				<field type="float" name="Gy">Angular rate Y axis (deg/sec)</field>
+				<field type="float" name="Gz">Angular rate Z axis (deg/sec)</field>
+				<field type="float" name="Mx">X Magnetic field (Gauss)</field>
+				<field type="float" name="My">Y Magnetic field (Gauss)</field>
+				<field type="float" name="Mz">Z Magnetic field (Gauss)</field>
+				<field type="float" name="IMU_temp">IMU Temp</field>
+				<field type="float" name="d1">tbd 1</field>
+				<field type="float" name="d2">tbd 2</field>
+				<field type="float" name="d3">tbd 3</field>
+				<field type="float" name="d4">tbd 4</field>
+				<field type="float" name="d5">tbd 5</field>
+				<field type="float" name="d6">tbd 6</field>
+        </message>
+        <message id="223" name="AIRDATA_SENSOR">
+                <description>Data from an airdata sensor</description> 
+                <field type="uint32_t" name="time_boot_ms">Time since boot in msec</field>
+                <field type="uint64_t" name="utc_time_us">UTC time in usec</field>                
+				<field type="float" name="absP">Absolute Pressure (Pa)</field>
+				<field type="float" name="dP_1">Differential Pressure 1(Pa)</field>
+				<field type="float" name="dp_2">Differential Pressure 2(Pa)</field>
+				<field type="float" name="dp_3">Differential Pressure 3(Pa)</field>
+				<field type="float" name="Sensor_Temp">Sensor Temperature</field>
+				<field type="float" name="Altitude">Calculated Altitude</field>
+				<field type="float" name="Airspeed">Calculated Airspeed</field>
+				<field type="float" name="Density">Calculated air density</field>
+				<field type="float" name="d1">tbd 1</field>
+				<field type="float" name="d2">tbd 2</field>
+				<field type="float" name="d3">tbd 3</field>
+        </message>      
+    </messages>
+</mavlink>
