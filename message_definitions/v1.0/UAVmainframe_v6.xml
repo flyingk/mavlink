@@ -384,6 +384,13 @@
             <field type="uint16_t" name="RPM_6">Motor 6 RPM [1/s]</field>
         </message>
         <!--  UAVmainframe card link - Version 1.0  -->
+        <message id="220" name="SENSOR_ID">
+                <description>Sensor ID information</description>
+                <field type="char[10]" name="name">Sensor name</field>
+                <field type="uint8_t"  name="version_high">Major version</field>
+                <field type="uint8_t"  name="version_low">Minor version</field>
+                <field type="char[10]" name="configuration">Configuration string</field>
+        </message>
         <message id="221" name="THRUST_SENSOR">
                 <description>Data from a thrust measurement load cell</description>
                 <field type="uint32_t" name="time_boot_ms">Time since boot in msec</field>
