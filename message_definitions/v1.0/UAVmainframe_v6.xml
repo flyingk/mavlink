@@ -398,18 +398,18 @@
         </message>
         <message id="222" name="ATTITUDE_SENSOR">
                 <description>Data from a 9 DoF attitude sensor</description>
-                <field type="uint32_t" name="time_boot_ms">Time since boot in msec</field>
-                <field type="uint64_t" name="utc_time_us">UTC time in usec</field>
-                <field type="float" name="Ax">X acceleration (g)</field>
-				<field type="float" name="Ay">Y acceleration (g)</field>
-				<field type="float" name="Az">Z acceleration (g)</field>
-				<field type="float" name="Gx">Angular rate X axis (deg/sec)</field>
-				<field type="float" name="Gy">Angular rate Y axis (deg/sec)</field>
-				<field type="float" name="Gz">Angular rate Z axis (deg/sec)</field>
-				<field type="float" name="Mx">X Magnetic field (Gauss)</field>
-				<field type="float" name="My">Y Magnetic field (Gauss)</field>
-				<field type="float" name="Mz">Z Magnetic field (Gauss)</field>
-				<field type="float" name="IMU_temp">IMU Temp</field>
+                <field type="uint64_t" name="sensor_time_boot_us">Sensor time since boot in usec</field>
+                <field type="uint64_t" name="recorded_time_us">recorded at time in usec</field>
+                <field type="float" name="Ax_UNIT_g">X acceleration (g)</field>
+				<field type="float" name="Ay_UNIT_g">Y acceleration (g)</field>
+				<field type="float" name="Az_UNIT_g">Z acceleration (g)</field>
+				<field type="float" name="Gx_UNIT_deg_d_sec">Angular rate X axis (deg/sec)</field>
+				<field type="float" name="Gy_UNIT_deg_d_sec">Angular rate Y axis (deg/sec)</field>
+				<field type="float" name="Gz_UNIT_deg_d_sec">Angular rate Z axis (deg/sec)</field>
+				<field type="float" name="Mx_UNIT_Gauss">X Magnetic field (Gauss)</field>
+				<field type="float" name="My_UNIT_Gauss">Y Magnetic field (Gauss)</field>
+				<field type="float" name="Mz_UNIT_Gauss">Z Magnetic field (Gauss)</field>
+				<field type="float" name="Sensor_temp_UNIT_C">Sensor temp (deg C)</field>
 				<field type="float" name="d1">tbd 1</field>
 				<field type="float" name="d2">tbd 2</field>
 				<field type="float" name="d3">tbd 3</field>
