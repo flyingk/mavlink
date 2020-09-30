@@ -398,8 +398,9 @@
         </message>
         <message id="222" name="ATTITUDE_SENSOR">
                 <description>Data from a 9 DoF attitude sensor</description>
-                <field type="uint64_t" name="sensor_time_boot_us">Sensor time since boot in usec</field>
-                <field type="uint64_t" name="recorded_time_us">recorded at time in usec</field>
+                <field type="uint64_t" name="sensor_time_us">Sensor time in usec</field>
+                <field type="uint32_t" name="sensor_processing_time_us">Sensor processing time in usec</field>
+                <field type="uint64_t" name="recorded_time_us">recording timestamp in usec</field>
                 <field type="float" name="Ax_UNIT_g">X acceleration (g)</field>
 				<field type="float" name="Ay_UNIT_g">Y acceleration (g)</field>
 				<field type="float" name="Az_UNIT_g">Z acceleration (g)</field>
@@ -413,22 +414,20 @@
 				<field type="float" name="d1">tbd 1</field>
 				<field type="float" name="d2">tbd 2</field>
 				<field type="float" name="d3">tbd 3</field>
-				<field type="float" name="d4">tbd 4</field>
-				<field type="float" name="d5">tbd 5</field>
-				<field type="float" name="d6">tbd 6</field>
         </message>
         <message id="223" name="AIRDATA_SENSOR">
                 <description>Data from an airdata sensor</description> 
-                <field type="uint32_t" name="time_boot_ms">Time since boot in msec</field>
-                <field type="uint64_t" name="utc_time_us">UTC time in usec</field>                
-				<field type="float" name="absP">Absolute Pressure (Pa)</field>
-				<field type="float" name="dP_1">Differential Pressure 1(Pa)</field>
-				<field type="float" name="dp_2">Differential Pressure 2(Pa)</field>
-				<field type="float" name="dp_3">Differential Pressure 3(Pa)</field>
-				<field type="float" name="Sensor_Temp">Sensor Temperature</field>
-				<field type="float" name="Altitude">Calculated Altitude</field>
-				<field type="float" name="Airspeed">Calculated Airspeed</field>
-				<field type="float" name="Density">Calculated air density</field>
+                <field type="uint64_t" name="sensor_time_us">Sensor time in usec</field>
+                <field type="uint32_t" name="sensor_processing_time_us">Sensor processing time in usec</field>
+                <field type="uint64_t" name="recorded_time_us">recording timestamp in usec</field>            
+				<field type="float" name="absP_UNIT_Pa">Absolute Pressure (Pa)</field>
+				<field type="float" name="dP_1_UNIT_Pa">Differential Pressure 1(Pa)</field>
+				<field type="float" name="dp_2_UNIT_Pa">Differential Pressure 2(Pa)</field>
+				<field type="float" name="dp_3_UNIT_Pa">Differential Pressure 3(Pa)</field>
+				<field type="float" name="Sensor_Temp_UNIT_C">Sensor Temperature (deg C)</field>
+				<field type="float" name="Altitude_UNIT_m">Calculated Altitude (m)</field>
+				<field type="float" name="Airspeed_UNIT_m_d_s">Calculated Airspeed (m/s)</field>
+				<field type="float" name="Density_UNIT_kg_d_m3">Calculated air density (kg/m3)</field>
 				<field type="float" name="d1">tbd 1</field>
 				<field type="float" name="d2">tbd 2</field>
 				<field type="float" name="d3">tbd 3</field>
