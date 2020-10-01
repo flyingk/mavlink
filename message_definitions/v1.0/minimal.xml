@@ -58,9 +58,9 @@
       <entry value="17" name="MAV_AUTOPILOT_ASLUAV">
         <description>ASLUAV autopilot -- http://www.asl.ethz.ch</description>
       </entry>
-      <entry value="18" name="MAV_AUTOPILOT_SMARTAP">
-        <description>SmartAP Autopilot - http://sky-drones.com</description>
-      </entry>
+      <entry value="18" name="MAV_AUTOPILOT_UAVMAINFRAME">
+		<description>UAVmainframe - uav-flightresearch.com</description>
+	  </entry>
       <entry value="19" name="MAV_AUTOPILOT_AIRRAILS">
         <description>AirRails - http://uaventure.com</description>
       </entry>

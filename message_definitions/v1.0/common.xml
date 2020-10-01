@@ -5619,51 +5619,6 @@
       <field type="uint8_t" name="breach_mitigation" enum="FENCE_MITIGATE">Active action to prevent fence breach</field>
     </message>
     <!-- MESSAGE IDs 180 - 229: Space for custom messages in individual projectname_messages.xml files -->
-    <!-- 192 MAG_CAL_REPORT imported from ardupilotmega.xml -->
-    <message id="192" name="MAG_CAL_REPORT">
-      <description>Reports results of completed compass calibration. Sent until MAG_CAL_ACK received.</description>
-      <field type="uint8_t" name="compass_id">Compass being calibrated.</field>
-      <field type="uint8_t" name="cal_mask" display="bitmask">Bitmask of compasses being calibrated.</field>
-      <field type="uint8_t" name="cal_status" enum="MAG_CAL_STATUS">Calibration Status.</field>
-      <field type="uint8_t" name="autosaved">0=requires a MAV_CMD_DO_ACCEPT_MAG_CAL, 1=saved to parameters.</field>
-      <field type="float" name="fitness" units="mgauss">RMS milligauss residuals.</field>
-      <field type="float" name="ofs_x">X offset.</field>
-      <field type="float" name="ofs_y">Y offset.</field>
-      <field type="float" name="ofs_z">Z offset.</field>
-      <field type="float" name="diag_x">X diagonal (matrix 11).</field>
-      <field type="float" name="diag_y">Y diagonal (matrix 22).</field>
-      <field type="float" name="diag_z">Z diagonal (matrix 33).</field>
-      <field type="float" name="offdiag_x">X off-diagonal (matrix 12 and 21).</field>
-      <field type="float" name="offdiag_y">Y off-diagonal (matrix 13 and 31).</field>
-      <field type="float" name="offdiag_z">Z off-diagonal (matrix 32 and 23).</field>
-      <extensions/>
-      <field type="float" name="orientation_confidence">Confidence in orientation (higher is better).</field>
-      <field type="uint8_t" name="old_orientation" enum="MAV_SENSOR_ORIENTATION">orientation before calibration.</field>
-      <field type="uint8_t" name="new_orientation" enum="MAV_SENSOR_ORIENTATION">orientation after calibration.</field>
-      <field type="float" name="scale_factor">field radius correction factor</field>
-    </message>
-    <!-- 225 EFI_STATUS imported from ardupilotmega.xml -->
-    <message id="225" name="EFI_STATUS">
-      <description>EFI status output</description>
-      <field type="uint8_t" name="health">EFI health status</field>
-      <field type="float" name="ecu_index">ECU index</field>
-      <field type="float" name="rpm">RPM</field>
-      <field type="float" name="fuel_consumed" units="g">Fuel consumed</field>
-      <field type="float" name="fuel_flow" units="g/min">Fuel flow rate</field>
-      <field type="float" name="engine_load" units="%">Engine load</field>
-      <field type="float" name="throttle_position" units="%">Throttle position</field>
-      <field type="float" name="spark_dwell_time" units="ms">Spark dwell time</field>
-      <field type="float" name="barometric_pressure" units="kPa">Barometric pressure</field>
-      <field type="float" name="intake_manifold_pressure" units="kPa">Intake manifold pressure(</field>
-      <field type="float" name="intake_manifold_temperature" units="degC">Intake manifold temperature</field>
-      <field type="float" name="cylinder_head_temperature" units="degC">Cylinder head temperature</field>
-      <field type="float" name="ignition_timing" units="deg">Ignition timing (Crank angle degrees)</field>
-      <field type="float" name="injection_time" units="ms">Injection time</field>
-      <field type="float" name="exhaust_gas_temperature" units="degC">Exhaust gas temperature</field>
-      <field type="float" name="throttle_out" units="%">Output throttle</field>
-      <field type="float" name="pt_compensation">Pressure/temperature compensation</field>
-    </message>
-    <!-- MESSAGE IDs 180 - 229: Space for custom messages in individual projectname_messages.xml files -->
     <message id="230" name="ESTIMATOR_STATUS">
       <description>Estimator status message including flags, innovation test ratios and estimated accuracies. The flags message is an integer bitmask containing information on which EKF outputs are valid. See the ESTIMATOR_STATUS_FLAGS enum definition for further information. The innovation test ratios show the magnitude of the sensor innovation divided by the innovation check threshold. Under normal operation the innovation test ratios should be below 0.5 with occasional values up to 1.0. Values greater than 1.0 should be rare under normal operation and indicate that a measurement has been rejected by the filter. The user should be notified if an innovation test ratio greater than 1.0 is recorded. Notifications for values in the range between 0.5 and 1.0 should be optional and controllable by the user.</description>
       <field type="uint64_t" name="time_usec" units="us">Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number.</field>
