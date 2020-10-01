@@ -1,0 +1,312 @@
+<?xml version='1.0'?>
+<mavlink>
+    <include>common.xml</include>
+    <version>3</version>
+    <!--Version 1.0 -->
+    <!-- MESSAGE IDs 180 - 240: Space for custom messages in individual projectname_messages.xml files -->
+    <messages>
+        <message id="180" name="VEHICLE_STATE">
+        	<description>Vehicle state for displays</description>
+            <field type="uint32_t" name="time_boot_ms">Timestamp (Simulation time)</field>
+            <field type="double" name="Lat">Estimated Lat (deg)</field>
+            <field type="double" name="Lon">Estimated Lon (deg)</field>
+            <field type="float" name="Alt_msl">Estimated Alt above msl (m)</field>
+            <field type="float" name="Alt_agl">Estimated Alt above ground level (m)</field>
+            <field type="float" name="Pn">Estimated Pn (m)</field>
+            <field type="float" name="Pe">Estimated Pe (m)</field>
+            <field type="float" name="Pd">Estimated Pd (m)</field>
+            <field type="float" name="Vn">Estimated body axis x-vel (m/sec)</field>
+            <field type="float" name="Ve">Estimated body axis y-vel (m/sec)</field>
+            <field type="float" name="Vd">Estimated body axis z-vel (m/sec)</field>
+            <field type="float" name="p">Estimated angular rate X axis (deg/sec)</field>
+            <field type="float" name="q">Estimated angular rate Y axis (deg/sec)</field>
+            <field type="float" name="r">Estimated angular rate Z axis (deg/sec)</field>
+            <field type="float" name="Roll">Estimated roll angle [deg]</field>
+            <field type="float" name="Pitch">Estimated pitch angle [deg]</field>
+            <field type="float" name="Yaw">Estimated yaw angle [deg]</field>
+            <field type="float" name="Vair">Estimated airspeed [m/s]</field>
+            <field type="float" name="AoA">Estimated aoa [deg]</field>
+            <field type="float" name="AoS">Estimated sideslip [deg]</field>
+            <field type="float" name="Nz">Load factor Z (-)</field>
+        </message>
+        <message id="181" name="FLAP_FEEDBACK">
+        	<description>Flap position feedback and status</description>
+        	<field type="uint32_t" name="time_boot_ms">Timestamp (Simulation time)</field>
+        	<field type="uint16_t" name="FLAP_STATUS">Flap status bitmask [OK/Fail]</field>
+        	<field type="float" name="FLAP_LHS_CAN_11">LHS canard flap angle [deg]</field>
+        	<field type="float" name="FLAP_LHS_CAN_12">LHS canard flap angle [deg]</field>
+        	<field type="float" name="FLAP_RHS_CAN_21">RHS canard flap angle [deg]</field>
+        	<field type="float" name="FLAP_RHS_CAN_22">RHS canard flap angle [deg]</field>
+        	<field type="float" name="FLAP_LHS_WING_31">LHS wing flap angle [deg]</field>
+			<field type="float" name="FLAP_LHS_WING_32">LHS wing flap angle [deg]</field>
+			<field type="float" name="FLAP_LHS_WING_33">LHS wing flap angle [deg]</field>
+			<field type="float" name="FLAP_LHS_WING_34">LHS wing flap angle [deg]</field>
+        	<field type="float" name="FLAP_RHS_WING_41">RHS wing flap angle [deg]</field>
+        	<field type="float" name="FLAP_RHS_WING_42">RHS wing flap angle [deg]</field>
+        	<field type="float" name="FLAP_RHS_WING_43">RHS wing flap angle [deg]</field>
+        	<field type="float" name="FLAP_RHS_WING_44">RHS wing flap angle [deg]</field>
+        </message>
+        <message id="182" name="ENGINE_FEEDBACK">
+        	<description>Engine RPM feedback and status</description>
+        	<field type="uint32_t" name="time_boot_ms">Timestamp (Simulation time)</field>
+        	<field type="uint64_t" name="ENGINE_STATUS">Engine status bitmask [OK/Fail]</field>
+        	<field type="uint16_t" name="ENGINE_LHS_CAN_11_1">LHS canard ENGINE RPM [1/min]</field>
+        	<field type="uint16_t" name="ENGINE_LHS_CAN_11_2">LHS canard ENGINE RPM [1/min]</field>
+        	<field type="uint16_t" name="ENGINE_LHS_CAN_11_3">LHS canard ENGINE RPM [1/min]</field>
+        	<field type="uint16_t" name="ENGINE_LHS_CAN_12_1">LHS canard ENGINE RPM [1/min]</field>
+        	<field type="uint16_t" name="ENGINE_LHS_CAN_12_2">LHS canard ENGINE RPM [1/min]</field>
+        	<field type="uint16_t" name="ENGINE_LHS_CAN_12_3">LHS canard ENGINE RPM [1/min]</field>
+        	<field type="uint16_t" name="ENGINE_RHS_CAN_21_1">RHS canard ENGINE RPM [1/min]</field>
+        	<field type="uint16_t" name="ENGINE_RHS_CAN_21_2">RHS canard ENGINE RPM [1/min]</field>
+        	<field type="uint16_t" name="ENGINE_RHS_CAN_21_3">RHS canard ENGINE RPM [1/min]</field>
+        	<field type="uint16_t" name="ENGINE_RHS_CAN_22_1">RHS canard ENGINE RPM [1/min]</field>        	
+        	<field type="uint16_t" name="ENGINE_RHS_CAN_22_2">RHS canard ENGINE RPM [1/min]</field>
+        	<field type="uint16_t" name="ENGINE_RHS_CAN_22_3">RHS canard ENGINE RPM [1/min]</field>
+        	<field type="uint16_t" name="ENGINE_LHS_WING_31_1">LHS wing ENGINE RPM [1/min]</field>
+			<field type="uint16_t" name="ENGINE_LHS_WING_31_2">LHS wing ENGINE RPM [1/min]</field>
+			<field type="uint16_t" name="ENGINE_LHS_WING_31_3">LHS wing ENGINE RPM [1/min]</field>
+			<field type="uint16_t" name="ENGINE_LHS_WING_32_1">LHS wing ENGINE RPM [1/min]</field>
+        	<field type="uint16_t" name="ENGINE_LHS_WING_32_2">LHS wing ENGINE RPM [1/min]</field>
+			<field type="uint16_t" name="ENGINE_LHS_WING_32_3">LHS wing ENGINE RPM [1/min]</field>
+			<field type="uint16_t" name="ENGINE_LHS_WING_33_1">LHS wing ENGINE RPM [1/min]</field>
+			<field type="uint16_t" name="ENGINE_LHS_WING_33_2">LHS wing ENGINE RPM [1/min]</field>
+        	<field type="uint16_t" name="ENGINE_LHS_WING_33_3">LHS wing ENGINE RPM [1/min]</field>
+			<field type="uint16_t" name="ENGINE_LHS_WING_34_1">LHS wing ENGINE RPM [1/min]</field>
+			<field type="uint16_t" name="ENGINE_LHS_WING_34_2">LHS wing ENGINE RPM [1/min]</field>
+			<field type="uint16_t" name="ENGINE_LHS_WING_34_3">LHS wing ENGINE RPM [1/min]</field>
+        	<field type="uint16_t" name="ENGINE_RHS_WING_41_1">RHS wing ENGINE RPM [1/min]</field>
+        	<field type="uint16_t" name="ENGINE_RHS_WING_41_2">RHS wing ENGINE RPM [1/min]</field>
+        	<field type="uint16_t" name="ENGINE_RHS_WING_41_3">RHS wing ENGINE RPM [1/min]</field>
+        	<field type="uint16_t" name="ENGINE_RHS_WING_42_1">RHS wing ENGINE RPM [1/min]</field>
+        	<field type="uint16_t" name="ENGINE_RHS_WING_42_2">RHS wing ENGINE RPM [1/min]</field>
+        	<field type="uint16_t" name="ENGINE_RHS_WING_42_3">RHS wing ENGINE RPM [1/min]</field>
+        	<field type="uint16_t" name="ENGINE_RHS_WING_43_1">RHS wing ENGINE RPM [1/min]</field>
+        	<field type="uint16_t" name="ENGINE_RHS_WING_43_2">RHS wing ENGINE RPM [1/min]</field>
+        	<field type="uint16_t" name="ENGINE_RHS_WING_43_3">RHS wing ENGINE RPM [1/min]</field>
+        	<field type="uint16_t" name="ENGINE_RHS_WING_44_1">RHS wing ENGINE RPM [1/min]</field>
+        	<field type="uint16_t" name="ENGINE_RHS_WING_44_2">RHS wing ENGINE RPM [1/min]</field>
+        	<field type="uint16_t" name="ENGINE_RHS_WING_44_3">RHS wing ENGINE RPM [1/min]</field>
+        </message>
+        <message id="183" name="FCL_STATUS">
+        	<description>FCL status flags</description>
+            <field type="uint32_t" name="time_boot_ms">Timestamp (Simulation time)</field>
+            <field type="uint8_t" name="ARMED">FCL Arming status [-]</field>
+        	<field type="uint8_t" name="FCL_MODE_LON">FCL longitudinal mode [-]</field>
+        	<field type="uint8_t" name="FCL_MODE_LAT">FCL lateral mode [-]</field>
+            <field type="uint8_t" name="FCL_GROUND_PROX">FCL flag 1 [-]</field>
+            <field type="uint8_t" name="FCL_ON_GROUND">FCL flag 2 [-]</field>
+            <field type="uint8_t" name="FCL_RC_LOSS">FCL flag 3 [-]</field>
+            <field type="uint8_t" name="FCL_POS_HOLD">FCL flag 4 [-]</field>
+            <field type="uint8_t" name="FCL_NOSE_IN_WIND">FCL flag 5 [-]</field>
+            <field type="uint8_t" name="FCL_TEST_MODE">FCL flag 6 [-]</field>
+            <field type="uint8_t" name="FCL_MOMENT_PRIO">FCL flag 7 [-]</field>
+            <field type="uint8_t" name="FCL_ART_DRAG">FCL flag 8 [-]</field>
+            <field type="uint8_t" name="FCL_LANDED">FCL flag 9 [-]</field>
+            <field type="uint8_t" name="FCL_10">FCL flag 10 [-]</field>
+            <field type="uint8_t" name="FCL_11">FCL flag 11 [-]</field>
+            <field type="uint8_t" name="FCL_12">FCL flag 12 [-]</field>
+            <field type="uint8_t" name="FCL_13">FCL flag 13 [-]</field>
+            <field type="uint8_t" name="FCL_14">FCL flag 14 [-]</field>
+            <field type="uint8_t" name="FCL_15">FCL flag 15 [-]</field>
+            <field type="uint8_t" name="FCL_16">FCL flag 16 [-]</field>
+            <field type="float" name="FCL_Vair">Estimated airspeed [m/s]</field>
+        	<field type="float" name="FCL_W_spd">Estimated Wind speed (m/s)</field>
+            <field type="float" name="FCL_W_dir">Estimated Wind direction (deg)</field>
+        </message>
+        <message id="184" name="PILOT_INPUT_STATION">
+        	<description>Pilot control inputs (to Sim)</description>
+        	<field type="uint32_t" name="time_boot_ms">Timestamp (Simulation time)</field>
+        	<field type="int16_t" name="STICK_LHS_X">LHS Stick position X [%]</field>
+        	<field type="int16_t" name="STICK_LHS_Y">LHS Stick position Y [%]</field>
+        	<field type="int16_t" name="STICK_RHS_X">RHS Stick position X [%]</field>
+        	<field type="int16_t" name="STICK_RHS_Y">RHS Stick position Y [%]</field>
+        	<field type="uint8_t" name="SWITCH_ARM">Switch 1 [-]</field>
+        	<field type="uint8_t" name="SWITCH_GROUND_PROX">Switch 2 [-]</field>
+            <field type="uint8_t" name="SWITCH_ON_GROUND">Switch 3 [-]</field>
+        	<field type="uint8_t" name="SWITCH_Gear">Switch 4 [-]</field>
+        	<field type="uint8_t" name="SWITCH_5">Switch 5 [-]</field>
+        	<field type="uint8_t" name="SWITCH_6">Switch 6 [-]</field>
+        	<field type="uint8_t" name="SWITCH_7">Switch 7 [-]</field>
+        	<field type="uint8_t" name="SWITCH_8">Switch 8 [-]</field>
+        	<field type="uint8_t" name="KNOB_1">Knob 1 [-]</field>
+        	<field type="uint8_t" name="KNOB_2">Knob 2 [-]</field>
+            <field type="uint8_t" name="KNOB_3">Knob 3 [-]</field>
+        	<field type="uint8_t" name="KNOB_4">Knob 4 [-]</field>
+        	<field type="uint8_t" name="KNOB_5">Knob 5 [-]</field>
+        	<field type="uint8_t" name="KNOB_6">Knob 6 [-]</field>
+        	<field type="uint8_t" name="BUTTON_1">Button 1 [-]</field>
+        	<field type="uint8_t" name="BUTTON_2">Button 2 [-]</field>
+        	<field type="uint8_t" name="BUTTON_3">Button 3 [-]</field>
+        	<field type="uint8_t" name="BUTTON_4">Button 4 [-]</field>
+        	<field type="uint8_t" name="BUTTON_5">Button 5 [-]</field>
+        	<field type="uint8_t" name="BUTTON_6">Button 6 [-]</field>
+        	<field type="uint8_t" name="BUTTON_7">Button 7 [-]</field>
+        	<field type="uint8_t" name="BUTTON_8">Button 8 [-]</field>
+        	<field type="uint8_t" name="BUTTON_9">Button 9 [-]</field>
+        	<field type="uint8_t" name="BUTTON_10">Button 10 [-]</field>
+        	<field type="uint8_t" name="BUTTON_11">Button 11 [-]</field>
+        	<field type="uint8_t" name="BUTTON_12">Button 12 [-]</field>
+        	<field type="uint8_t" name="BUTTON_13">Button 13 [-]</field>
+        	<field type="uint8_t" name="BUTTON_14">Button 14 [-]</field>
+        	<field type="uint8_t" name="BUTTON_15">Button 15 [-]</field>
+        	<field type="uint8_t" name="BUTTON_16">Button 16 [-]</field>
+        	<field type="uint8_t" name="BUTTON_17">Button 17 [-]</field>
+        	<field type="uint8_t" name="BUTTON_18">Button 18 [-]</field>
+        	<field type="uint8_t" name="BUTTON_19">Button 19 [-]</field>
+        	<field type="uint8_t" name="THREE_POS_1">3 Pos switch 1 [-]</field>
+        	<field type="uint8_t" name="SEL_1">Sys ID selector 1 [-]</field>
+        	<field type="uint8_t" name="SEL_2">Sys ID selector 2 [-]</field>
+        </message>
+        <message id="185" name="XPLANE_DATA">
+        	<description>Data returned from X-Plane</description>
+        	<field type="uint32_t" name="time_boot_ms">Timestamp (Simulation time)</field>
+        	<field type="float" name="T_alt_msl">Height of terrain above MSL at CG (m)</field>
+        	<field type="float" name="T_inc_N">Terrain incidence N component (-)</field>
+        	<field type="float" name="T_inc_E">Terrain incidence E component (-)</field>
+        	<field type="float" name="T_inc_D">Terrain incidence D component (-)</field>
+        	<field type="int8_t" name="Terrain_Type">Type of terrain (-)</field>
+        	<field type="float" name="Terrain_Surface_Friction">Coefficient of friction of terrain (-)</field>
+        </message>
+        <message id="186" name="SIM_CONTROL_INITIAL_STATE">
+        	<description>Parameters to control the simulation initial state</description>
+        	<field type="uint32_t" name="time_boot_ms">Timestamp (Simulation time)</field>
+            <field type="double" name="Lat">Starting position lat (deg)</field>
+            <field type="double" name="Lon">Starting position lon (deg)</field>
+            <field type="float"  name="Alt_msl">Starting position alt msl (m)</field>
+            <field type="float"  name="Hdg">Initial heading (deg)</field>
+            <field type="float"  name="Vx">Initial speed X body (m/s)</field>
+            <field type="float"  name="Vy">Initial speed Y body (m/s)</field>
+            <field type="float"  name="Vz">Initial speed Z body (m/s)</field>
+            <field type="float"  name="Battery_SoC">Initial battery SoC (Ah)</field>
+            <field type="float"  name="Battery_Temp">Initial battery temp (C)</field>
+            <field type="uint8_t" name="Reset_loc">Reset location (-)</field>
+            <field type="uint8_t" name="Reset_speed">Reset speed (-)</field>
+            <field type="uint8_t" name="Reset_batt">Reset battery state (-)</field>
+        </message>
+        <message id="187" name="SIM_CONTROL_ENVIRONMENT">
+        	<description>Parameters to control the simulation environment</description>
+        	<field type="uint32_t" name="time_boot_ms">Timestamp (Simulation time)</field>
+        	<field type="float" name="W_spd">Set Wind speed (m/s)</field>
+            <field type="float" name="W_dir">Set Wind direction (deg)</field>
+            <field type="uint8_t" name="Turb_int">Set Turbulence intensity (-)</field>
+            <field type="float" name="Ambient_temp">Set ambient temp (C)</field>
+            <field type="float" name="Ambient_press">Set ambient pressure (Pa)</field>
+        </message>
+        <message id="188" name="SIM_CONTROL_EVENTS">
+        	<description>Parameters to trigger simulation events</description>
+        	<field type="uint32_t" name="time_boot_ms">Timestamp (Simulation time)</field>
+            <field type="uint8_t" name="marker">Marker (-)</field>
+            <field type="uint8_t" name="event_1">Marker/Signal 2 (-)</field>
+            <field type="uint8_t" name="event_2">Marker/Signal 3 (-)</field>
+            <field type="uint8_t" name="event_3">Marker/Signal 4 (-)</field>
+            <field type="uint8_t" name="event_4">Marker/Signal 5 (-)</field>
+            <field type="uint8_t" name="event_5">Marker/Signal 6 (-)</field>
+            <field type="int8_t" name="p_var_1">Marker/Signal 7 (-)</field>
+            <field type="int8_t" name="p_var_2">Marker/Signal 8 (-)</field>
+            <field type="int8_t" name="p_var_3">Marker/Signal 9 (-)</field>
+            <field type="uint8_t" name="m_engine_out">Engine Out (-)</field>
+            <field type="uint8_t" name="m_flap_stuck">Flap Frozen (-)</field>
+            <field type="uint8_t" name="m_flap_float">Flap Floating (-)</field>
+            <field type="uint8_t" name="m_gps">GPS loss (-)</field>
+            <field type="uint8_t" name="m_rc">RC loss (-)</field>
+            <field type="uint8_t" name="malfun_6">Marker/Signal 15 (-)</field>
+            <field type="uint8_t" name="malfun_7">Marker/Signal 16 (-)</field>
+            <field type="uint8_t" name="malfun_8">Marker/Signal 17 (-)</field>
+            <field type="uint8_t" name="malfun_9">Marker/Signal 18 (-)</field>
+            <field type="uint8_t" name="malfun_10">Marker/Signal 19 (-)</field>
+        </message>
+        <message id="189" name="ENERGY_STORAGE">
+        	<description>Battery state and condition</description>
+        	<field type="uint32_t" name="time_boot_ms">Timestamp (Simulation time)</field>
+            <field type="float" name="Elec_PWR">Current electrical power consumption (kW)</field>
+        	<field type="float" name="Total_Energy_Used">Total energy consumption (kWh)</field>
+        	<field type="float" name="pack1_soc">SoC of battery pack 1 (deg C)</field>
+        	<field type="float" name="pack2_soc">SoC of battery pack 2 (deg C)</field>
+        	<field type="float" name="pack3_soc">SoC of battery pack 3 (deg C)</field>
+        	<field type="float" name="pack1_volt">Voltage of battery pack 1 (deg C)</field>
+        	<field type="float" name="pack2_volt">Voltage of battery pack 2 (deg C)</field>
+        	<field type="float" name="pack3_volt">Voltage of battery pack 3 (deg C)</field>
+        	<field type="float" name="pack1_temp">Temperature of battery pack 1 (deg C)</field>
+        	<field type="float" name="pack2_temp">Temperature of battery pack 2 (deg C)</field>
+        	<field type="float" name="pack3_temp">Temperature of battery pack 3 (deg C)</field>
+        </message>
+        <message id="190" name="MDL_INFO">
+        	<description>Model information</description>
+        	<field type="uint32_t" name="time_boot_ms">Timestamp (Simulation time)</field>
+        	<field type="float" name="model_version_major">Major version number</field>
+            <field type="float" name="model_version_minor">Minor version number</field>
+        	<field type="float" name="fcl_version">FCL version</field>
+        	<field type="uint8_t" name="hardware">desktop/e-bird</field>
+        	<field type="uint8_t" name="pilot_input">Pilot input hardware</field>
+            <field type="float" name="Weight">Aircraft weight</field>
+            <field type="float" name="X_CG">Aircraft CG location X</field>
+            <field type="float" name="Y_CG">Aircraft CG location Y</field>
+            <field type="float" name="Z_CG">Aircraft CG location Z</field>
+            <field type="uint32_t" name="Pressure">Ambient pressure (Pa)</field>
+            <field type="float" name="Temp">Ambient temperature (C)</field>
+            <field type="float" name="mission_time_s">Mission Time</field>
+            <field type="float" name="W_spd">Wind speed (m/s)</field>
+            <field type="float" name="W_dir">Wind direction (deg)</field>
+            <field type="uint8_t" name="AERO_MDL_STATUS">Aero model status flag [-]</field>
+            <field type="uint8_t" name="GEAR">Landing gear status [-]</field>
+        </message>
+        <message id="191" name="HACKJOB">
+        	<description>temporary data transfer</description>
+        	<field type="uint32_t" name="time_boot_ms">Timestamp (Simulation time)</field>
+        	<field type="double" name="ch0">ch0</field>
+        	<field type="double" name="ch1">ch1</field>
+        	<field type="double" name="ch2">ch2</field>
+        	<field type="double" name="ch3">ch3</field>
+        	<field type="double" name="ch4">ch4</field>
+        	<field type="double" name="ch5">ch5</field>
+        	<field type="double" name="ch6">ch6</field>
+        	<field type="double" name="ch7">ch7</field>
+        </message>
+        <message id="192" name="PILOT_INPUT_STATION_2">
+        	<description>Pilot control inputs (exact mapping)</description>
+        	<field type="uint32_t" name="time_boot_ms">Timestamp (Simulation time)</field>
+        	<field type="int16_t" name="STICK_LHS_X">LHS Stick position X [%]</field>
+        	<field type="int16_t" name="STICK_LHS_Y">LHS Stick position Y [%]</field>
+        	<field type="uint8_t" name="STICK_LHS_TG">Trigger SW LHS [-]</field>
+        	<field type="int16_t" name="STICK_RHS_X">RHS Stick position X [%]</field>
+        	<field type="int16_t" name="STICK_RHS_Y">RHS Stick position Y [%]</field>
+        	<field type="uint8_t" name="STICK_RHS_TG">Trigger SW RHS [-]</field>
+        	<field type="uint8_t" name="SWITCH_1">Switch 1 [-]</field>
+        	<field type="uint8_t" name="SWITCH_2">Switch 2 [-]</field>
+            <field type="uint8_t" name="SWITCH_3">Switch 3 [-]</field>
+        	<field type="uint8_t" name="SWITCH_4">Switch 4 [-]</field>
+        	<field type="uint8_t" name="SWITCH_5">Switch 5 [-]</field>
+        	<field type="uint8_t" name="SWITCH_6">Switch 6 [-]</field>
+        	<field type="uint8_t" name="SWITCH_7">Switch 7 [-]</field>
+        	<field type="uint8_t" name="SWITCH_8">Switch 8 [-]</field>
+        	<field type="uint8_t" name="KNOB_1">Knob 1 [-]</field>
+        	<field type="uint8_t" name="KNOB_2">Knob 2 [-]</field>
+            <field type="uint8_t" name="KNOB_3">Knob 3 [-]</field>
+        	<field type="uint8_t" name="KNOB_4">Knob 4 [-]</field>
+        	<field type="uint8_t" name="KNOB_5">Knob 5 [-]</field>
+        	<field type="uint8_t" name="KNOB_6">Knob 6 [-]</field>
+        	<field type="uint8_t" name="BUTTON_1">Button 1 [-]</field>
+        	<field type="uint8_t" name="BUTTON_2">Button 2 [-]</field>
+        	<field type="uint8_t" name="BUTTON_3">Button 3 [-]</field>
+        	<field type="uint8_t" name="BUTTON_4">Button 4 [-]</field>
+        	<field type="uint8_t" name="BUTTON_5">Button 5 [-]</field>
+        	<field type="uint8_t" name="BUTTON_6">Button 6 [-]</field>
+        	<field type="uint8_t" name="BUTTON_7">Button 7 [-]</field>
+        	<field type="uint8_t" name="BUTTON_8">Button 8 [-]</field>
+        	<field type="uint8_t" name="BUTTON_9">Button 9 [-]</field>
+        	<field type="uint8_t" name="BUTTON_10">Button 10 [-]</field>
+        	<field type="uint8_t" name="BUTTON_11">Button 11 [-]</field>
+        	<field type="uint8_t" name="BUTTON_12">Button 12 [-]</field>
+        	<field type="uint8_t" name="BUTTON_13">Button 13 [-]</field>
+        	<field type="uint8_t" name="BUTTON_14">Button 14 [-]</field>
+        	<field type="uint8_t" name="BUTTON_15">Button 15 [-]</field>
+        	<field type="uint8_t" name="BUTTON_16">Button 16 [-]</field>
+        	<field type="uint8_t" name="BUTTON_17">Button 17 [-]</field>
+        	<field type="uint8_t" name="BUTTON_18">Button 18 [-]</field>
+        	<field type="uint8_t" name="BUTTON_19">Button 19 [-]</field>
+        	<field type="uint8_t" name="THREE_POS_1">3 Pos switch 1 [-]</field>
+        	<field type="uint8_t" name="SEL_1">Sys ID selector 1 [-]</field>
+        	<field type="uint8_t" name="SEL_2">Sys ID selector 2 [-]</field>
+        </message>
+    </messages>
+</mavlink>
